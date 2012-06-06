@@ -1,0 +1,292 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>node-cards by kbjr</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/kbjr/node-cards">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/kbjr/node-cards/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/kbjr/node-cards/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>node-cards</h1>
+          <p>A Node.js playing card module with support for custom decks</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/kbjr">kbjr</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>Install</h1>
+
+<div class="highlight">
+<pre><span class="nv">$ </span>npm install cards
+</pre>
+</div>
+
+
+<h1>Usage</h1>
+
+<div class="highlight">
+<pre><span class="kd">var</span> <span class="nx">cards</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'cards'</span><span class="p">);</span>
+
+<span class="c1">// Create a new 52 card poker deck</span>
+<span class="kd">var</span> <span class="nx">deck</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">cards</span><span class="p">.</span><span class="nx">PokerDeck</span><span class="p">();</span>
+
+<span class="c1">// Shuffle the deck</span>
+<span class="nx">deck</span><span class="p">.</span><span class="nx">shuffleAll</span><span class="p">();</span>
+
+<span class="c1">// Draw a card</span>
+<span class="kd">var</span> <span class="nx">card</span> <span class="o">=</span> <span class="nx">deck</span><span class="p">.</span><span class="nx">draw</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">card</span><span class="p">);</span>
+</pre>
+</div>
+
+
+<h2>Creating a Deck</h2>
+
+<p>There are multiple built-in deck types. These include <code>PokerDeck</code>, <code>OldMaidDeck</code>, <code>EuchreDeck</code>, <code>PinochelDeck</code>, and <code>PiquetDeck</code>. The only one of these that can take any parameters is the poker deck which takes a config object, allowing the addition of jokers.</p>
+
+<div class="highlight">
+<pre><span class="kd">var</span> <span class="nx">deckWithJokers</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">cards</span><span class="p">.</span><span class="nx">PokerDeck</span><span class="p">({</span> <span class="nx">jokers</span><span class="o">:</span> <span class="mi">2</span> <span class="p">});</span>
+</pre>
+</div>
+
+
+<p>Optionally, you can also create an empty deck and add cards to it your self. This is done with the base <code>Deck</code> constructor.</p>
+
+<div class="highlight">
+<pre><span class="kd">var</span> <span class="nx">deck</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">cards</span><span class="p">.</span><span class="nx">Deck</span><span class="p">();</span>
+
+<span class="c1">// The new deck is completely empty</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">deck</span><span class="p">.</span><span class="nx">cards</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>  <span class="c1">// 0</span>
+
+<span class="c1">// Add a new card to the deck</span>
+<span class="nx">deck</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">cards</span><span class="p">.</span><span class="nx">Card</span><span class="p">(</span><span class="s1">'spade'</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span>
+</pre>
+</div>
+
+
+<p>You can extend the base constructor to create your own custom deck types.</p>
+
+<div class="highlight">
+<pre><span class="c1">// The generators object contains functions for creating new decks</span>
+<span class="nx">cards</span><span class="p">.</span><span class="nx">generators</span><span class="p">.</span><span class="nx">ourWeirdDeck</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">deck</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[</span><span class="s1">'club'</span><span class="p">,</span> <span class="s1">'diamond'</span><span class="p">,</span> <span class="s1">'heart'</span><span class="p">,</span> <span class="s1">'spade'</span><span class="p">].</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">suit</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">'Q'</span><span class="p">].</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">deck</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">cards</span><span class="p">.</span><span class="nx">Card</span><span class="p">(</span><span class="nx">suit</span><span class="p">,</span> <span class="nx">value</span><span class="p">));</span>
+        <span class="p">});</span>
+    <span class="p">});</span>
+<span class="p">};</span>
+
+<span class="c1">// Create the new deck constructor and point it to our generator</span>
+<span class="nx">cards</span><span class="p">.</span><span class="nx">Deck</span><span class="p">.</span><span class="nx">createType</span><span class="p">(</span><span class="s1">'WeirdDeck'</span><span class="p">,</span> <span class="s1">'ourWeirdDeck'</span><span class="p">);</span>
+
+<span class="c1">// Now we can create instances of our new deck type</span>
+<span class="kd">var</span> <span class="nx">weirdDeck</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">cards</span><span class="p">.</span><span class="nx">WeirdDeck</span><span class="p">();</span>
+</pre>
+</div>
+
+
+<h2>Piles</h2>
+
+<p>Each deck consists of three "piles" of cards. No card can appear in more than one pile at a time and every card exists in one of the three piles at all times. These piles are <code>"deck"</code>, <code>"held"</code>, and <code>"discard"</code>. By default, all cards in a deck are in the <code>deck</code> pile. When a card is drawn, it is moved to the <code>held</code> pile and when discarded, it is moved to the <code>discard</code> pile.</p>
+
+<div class="highlight">
+<pre><span class="kd">var</span> <span class="nx">deck</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">cards</span><span class="p">.</span><span class="nx">PokerDeck</span><span class="p">();</span>
+
+<span class="nx">deck</span><span class="p">.</span><span class="nx">deck</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">52</span><span class="p">;</span>
+<span class="nx">deck</span><span class="p">.</span><span class="nx">held</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">;</span>
+<span class="nx">deck</span><span class="p">.</span><span class="nx">discard</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="nx">deck</span><span class="p">.</span><span class="nx">draw</span><span class="p">();</span>
+
+<span class="nx">deck</span><span class="p">.</span><span class="nx">deck</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">51</span><span class="p">;</span>
+<span class="nx">deck</span><span class="p">.</span><span class="nx">held</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">1</span><span class="p">;</span>
+<span class="nx">deck</span><span class="p">.</span><span class="nx">discard</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="c1">// This is a shortcut for deck.discard(deck.draw())</span>
+<span class="nx">deck</span><span class="p">.</span><span class="nx">drawToDiscard</span><span class="p">();</span>
+
+<span class="nx">deck</span><span class="p">.</span><span class="nx">deck</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">50</span><span class="p">;</span>
+<span class="nx">deck</span><span class="p">.</span><span class="nx">held</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">1</span><span class="p">;</span>
+<span class="nx">deck</span><span class="p">.</span><span class="nx">discard</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">1</span><span class="p">;</span>
+</pre>
+</div>
+
+
+<h2>API</h2>
+
+<h3>Boolean cards.useArc4 = false</h3>
+
+<p>The <code>useArc4</code> flag changes how cards are shuffled. By default, the randomization needed for shuffling is creating using the built-in <code>Math.random()</code> function. By setting this flag to true, all shuffle functions will instead use the better (but slower) ARC4 PRNG.</p>
+
+<h3>cards.Card ( String suit, String value )</h3>
+
+<p>The constructor for creating new playing card objects.</p>
+
+<h4>String Card::suit</h4>
+
+<p>The suit of the card. The only suits created by the built-in types are "spade", "heart", "club", "diamond", and "other" (for special cards like jokers).</p>
+
+<h4>String Card::value</h4>
+
+<p>The value of the card. This value is cast to a string, so things like <code>new Card("spade", 3)</code> will work, but this property will produce the value <code>"3"</code> as a string.</p>
+
+<h4>Deck Card::deck</h4>
+
+<p>The deck object that this card belongs to.</p>
+
+<h3>cards.Pile &lt; Array ( void )</h3>
+
+<p>This constructor creates the "deck", "held", and "discard" piles inside of each deck. The pile constructor inherits from <code>Array</code>.</p>
+
+<h4>Array Pile::empty ( void )</h4>
+
+<p>Empties out the pile and returns an array of the values removed.</p>
+
+<h4>void Pile::copyInto ( Array arr )</h4>
+
+<p>Copy all values onto the end of another array (or array-like object).</p>
+
+<h4>void Pile::emptyInto ( Array arr )</h4>
+
+<p>Empty out the pile and append all of the values onto the end of another array (or array-like object).</p>
+
+<h4>mixed Pile::shiftInto ( Array arr )</h4>
+
+<p>Shift one value off of the pile and push it onto another array (or array-like object).</p>
+
+<h3>cards.Deck ([ mixed generator ])</h3>
+
+<p>The base constructor for creating new decks of cards. The generator argument is either a string (the name of a function on the <code>cards.generators</code> object) or a function.</p>
+
+<h4>void Deck::add ( Card card[, Object cfg { pile: "deck" } ])</h4>
+
+<p>Adds a card to the deck. If the card is already in a deck, it will first be removed from that deck. The optional config object takes one property <code>pile</code> which controlls which of the three piles the card will be added to.</p>
+
+<h4>void Deck::remove ( Card card )</h4>
+
+<p>Removes a card from the deck.</p>
+
+<h4>mixed Deck::draw ([ Number count ])</h4>
+
+<p>Draws a card(s) from the "deck" pile, moving them into the "held" pile and returns it. If there are no cards left in the deck, a <code>RangeError</code> will be thrown. If a count value is given, that many cards will be drawn and returned in an array. If there are cards in the deck, but not enough to meet the count requirement, all of the remaining cards will be returned in an array and no error will be throw. As such, you should check the length of the array you get back when doing multiple card draws.</p>
+
+<h4>mixed Deck::drawToDiscard ([ Number count ])</h4>
+
+<p>This method works the same as <code>Deck::draw()</code> except that cards are moved to "discard" instead of held.</p>
+
+<h4>Array Deck::find ([ mixed card ])</h4>
+
+<p>Finds a card in the deck. If the argument given is a <code>Card</code> object, that specific card will be found and returned with some extra positional information (see below). An array argument can also be given, though, in the format <code>[suit, value]</code>. If this is the case, all matching cards will be found (there can be more than one of the same kind of card in a deck, for example, in a Pinochel deck where every card is duplicated).</p>
+
+<div class="highlight">
+<pre><span class="kd">var</span> <span class="nx">card</span> <span class="o">=</span> <span class="nx">deck</span><span class="p">.</span><span class="nx">draw</span><span class="p">();</span>
+
+<span class="kd">var</span> <span class="nx">found</span> <span class="o">=</span> <span class="nx">deck</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">card</span><span class="p">);</span>
+
+<span class="c1">// </span>
+<span class="c1">// found = [</span>
+<span class="c1">//   {</span>
+<span class="c1">//     pileName: String,  (eg. "deck" or "discard")</span>
+<span class="c1">//     pile: cards.Pile,  (the actual Pile object)</span>
+<span class="c1">//     index: Number,     (the card's index in the pile)</span>
+<span class="c1">//     card: cards.Card   (the actual Card object)</span>
+<span class="c1">//   }</span>
+<span class="c1">// ]</span>
+<span class="c1">//</span>
+
+<span class="c1">// You can also search for a card by description, like so:</span>
+<span class="nx">deck</span><span class="p">.</span><span class="nx">find</span><span class="p">([</span> <span class="s2">"spade"</span><span class="p">,</span> <span class="s2">"A"</span> <span class="p">]);</span>
+</pre>
+</div>
+
+
+<h4>void Deck::shuffleAll ( void )</h4>
+
+<p>Moves all cards back into the "deck" pile and shuffles.</p>
+
+<h4>void Deck::shuffleRemaining ( void )</h4>
+
+<p>Shuffles all cards remaining in the "deck" pile.</p>
+
+<h4>void Deck::shuffleDiscard ( void )</h4>
+
+<p>Shuffles all cards in the "discard" pile and then appends them to the deck.</p>
+
+<h4>void Deck::discardAllHeld ( void )</h4>
+
+<p>Moves all cards from the "held" pile to the "discard" pile.</p>
+
+<h3>void cards.Deck.createType ( String name[, mixed generator[, function constructor ]])</h3>
+
+<p>Creates a new constructor at <code>cards[name]</code> that will create a new deck using the given generator. If a constructor function is given it will be called after invoking the <code>Deck</code> constructor.</p>
+
+<h3>cards.PokerDeck &lt; cards.Deck ([ Object cfg { jokers: 0 } ])</h3>
+
+<p>Creates a new Poker deck. If the config object is given, the number given in the <code>jokers</code> property will determine the number of joker cards added to the deck.</p>
+
+<h3>cards.OldMaidDeck &lt; cards.Deck ( void )</h3>
+
+<p>Creates a new Old Maid deck: a standard Poker deck with no jokers and a special card called a "maid" card.</p>
+
+<h3>cards.EuchreDeck &lt; cards.Deck ( void )</h3>
+
+<p>Creates a new Euchre deck.</p>
+
+<h3>cards.PinochelDeck &lt; cards.Deck ( void )</h3>
+
+<p>Creates a new Pinochel deck.</p>
+
+<h3>cards.PiquetDeck &lt; cards.Deck ( void )</h3>
+
+<p>Creates a new Piquet deck.</p>
+
+<h1>MIT License</h1>
+
+<p>Copyright (c) 2012 James Brumond</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-32428216-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
