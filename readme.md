@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/kbjr/node-cards.png)](http://travis-ci.org/kbjr/node-cards)
 # Install
 
 ```bash
