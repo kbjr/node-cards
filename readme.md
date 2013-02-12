@@ -22,7 +22,7 @@ console.log(card);
 
 ## Creating a Deck
 
-There are multiple built-in deck types. These include `PokerDeck`, `OldMaidDeck`, `EuchreDeck`, `PinochelDeck`, and `PiquetDeck`. The only one of these that can take any parameters is the poker deck which takes a config object, allowing the addition of jokers.
+There are multiple built-in deck types. These include `PokerDeck`, `OldMaidDeck`, `EuchreDeck`, `BarajaDeck` `PinochelDeck`, and `PiquetDeck`. The only one of these that can take any parameters is the poker deck which takes a config object, allowing the addition of jokers.
 
 ```javascript
 var deckWithJokers = new cards.PokerDeck({ jokers: 2 });

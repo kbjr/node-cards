@@ -18,10 +18,15 @@
   "dependencies": {
     "rand-utils": "latest"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "vows" : "latest"
+  },
   "optionalDependencies": {},
   "license": "MIT",
   "engines": {
     "node": "*"
+  },
+  "scripts": {
+    "test" : "node test/index.js"
   }
 }
