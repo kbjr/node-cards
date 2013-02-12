@@ -106,6 +106,16 @@ The value of the card. This value is cast to a string, so things like `new Card(
 
 The deck object that this card belongs to.
 
+#### String Card::unicodeString ( void )
+
+Get a unicode string representing the card, eg.
+
+```javascript
+var card = new cards.Card("spade", 3);
+
+card.unicodeString();  // "3♠"
+```
+
 ### cards.Pile < Array ( void )
 
 This constructor creates the "deck", "held", and "discard" piles inside of each deck. The pile constructor inherits from `Array`.
@@ -201,6 +211,10 @@ Creates a new Old Maid deck: a standard Poker deck with no jokers and a special 
 ### cards.EuchreDeck < cards.Deck ( void )
 
 Creates a new Euchre deck.
+
+### cards.BarajaDeck < cards.Deck ( void )
+
+Creates a new Baraja deck.
 
 ### cards.PinochelDeck < cards.Deck ( void )
 
