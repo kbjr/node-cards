@@ -1,11 +1,16 @@
+var cards = require('../lib/cards')
+ , vows = require('vows')
 
-global.cards = require('../lib/cards');
 
-global.createDeck = function() {
-	var deck = new cards.PokerDeck();
-	deck.shuffleAll();
-	return deck;
-};
+ vows.describe("Card Deck").addBatch({
+  "Poker Deck": {
+    topic: new cards.PokerDeck(),
+    shuffleAll : function(deck){
+      deck.shuffleAll()
+    }
+  }
 
+
+ }).run()
 
 
