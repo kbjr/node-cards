@@ -2,7 +2,7 @@
   "author": "James Brumond <james@jbrumond.me> (http://jbrumond.me)",
   "name": "cards",
   "description": "Basic playing cards module",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": {
     "type": "git",
     "url": "git://github.com/kbjr/node-cards.git"
