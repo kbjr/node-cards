@@ -2,11 +2,13 @@
 const { Card } = require('./card');
 const { FoolCard } = require('./fool');
 const { JokerCard } = require('./joker');
-const { MaidCard } = require('./maid');
+const { TrumpCard } = require('./trump');
+const { MajorArcanaCard } = require('./major-arcana');
 
 module.exports = {
 	Card,
 	FoolCard,
 	JokerCard,
-	MaidCard
+	TrumpCard,
+	MajorArcanaCard
 };

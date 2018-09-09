@@ -4,14 +4,22 @@ const { Suit } = require('../suits');
 
 const props = new WeakMap();
 
+/**
+ * @typedef CardOptions
+ * @property suit {Suit}
+ * @property value {number}
+ * @property shortText {string}
+ * @property longText {string}
+ */
+
 exports.Card = class Card {
-	constructor({ suit, value, shortText, longText }) {
+	constructor(/** @type {CardOptions} */ { suit, value, shortText, longText }) {
 		if (! (suit instanceof Suit)) {
 			throw new Error('Invalid card suit provided');
 		}
 
 		props.set(this, {
-			value,
+			deck: null,
 			shortText,
 			longText
 		});
@@ -26,7 +34,7 @@ exports.Card = class Card {
 		return `<Card suit=${this.suit} value=${this.value}>`;
 	}
 
-	/*
+	/**
 	 * @type {Deck}
 	 */
 	get deck() {
@@ -50,7 +58,7 @@ exports.Card = class Card {
 		}
 	}
 
-	/*
+	/**
 	 * @type {string}
 	 */
 	get shortText() {
@@ -67,6 +75,9 @@ exports.Card = class Card {
 		}
 	}
 
+	/**
+	 * @type {string}
+	 */
 	get longText() {
 		const { longText } = props.get(this);
 
@@ -81,6 +92,9 @@ exports.Card = class Card {
 		}
 	}
 
+	/**
+	 * @type {string|void}
+	 */
 	get unicode() {
 		return this.suit.unicodeCards[this.value];
 	}

@@ -1,5 +1,5 @@
 
-const { suits, spades, hearts, diamonds, clubs, jokers, trumps } = require('./unicode');
+const { suits, spades, hearts, diamonds, clubs, trumps, majorArcana } = require('./unicode');
 
 const Suit = exports.Suit = class Suit {
 	constructor({ name, unicodeSuit, unicodeCards }) {
@@ -14,6 +14,10 @@ const Suit = exports.Suit = class Suit {
 		return `<Suit ${this.name}>`;
 	}
 };
+
+
+
+// "Standard" Cards
 
 exports.spades = new Suit({
 	name: 'spades',
@@ -39,6 +43,16 @@ exports.clubs = new Suit({
 	unicodeCards: clubs
 });
 
+exports.trump = new Suit({
+	name: 'trump',
+	unicodeSuit: 'trump',
+	unicodeCards: trumps
+});
+
+
+
+// Minor / Major Arcana (Tarot)
+
 exports.swords = new Suit({
 	name: 'swords',
 	unicodeSuit: suits.sword,
@@ -57,17 +71,21 @@ exports.coins = new Suit({
 	unicodeCards: { }
 });
 
-exports.joker = new Suit({
-	name: 'joker',
-	unicodeSuit: 'joker',
-	unicodeCards: jokers
+exports.wands = new Suit({
+	name: 'wands',
+	unicodeSuit: suits.wand,
+	unicodeCards: { }
 });
 
-exports.trump = new Suit({
-	name: 'trump',
-	unicodeSuit: 'trump',
-	unicodeCards: trumps
+exports.majorArcana = new Suit({
+	name: 'major arcana',
+	unicodeSuit: 'major arcana',
+	unicodeCards: majorArcana
 });
+
+
+
+// None
 
 exports.none = new Suit({
 	name: '',

@@ -3,7 +3,7 @@ const { Deck } = require('../deck');
 const { trump } = require ('../suits');
 const { Card, FoolCard } = require('../card');
 
-exports.MajorArcana = class MajorArcana extends Deck {
+exports.MajorArcanaDeck = class MajorArcanaDeck extends Deck {
 	constructor() {
 		super(exports.majorArcana({ includeFool: true }));
 	}

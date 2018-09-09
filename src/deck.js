@@ -1,10 +1,21 @@
 
+const { Card } = require('./card');
 const { shuffle } = require('./rand');
 
+/**
+ * @type {Map.<Deck, Object>}
+ */
 const props = new WeakMap();
+
+/**
+ * @type {Set.<string>}
+ */
 const piles = new Set([ 'deck', 'discard', 'held' ]);
 
 const Deck = exports.Deck = class Deck {
+	/**
+	 * @param cards {Card[]}
+	 */
 	constructor(cards = [ ]) {
 		props.set(this, {
 			cards: new Set(cards),
@@ -19,7 +30,26 @@ const Deck = exports.Deck = class Deck {
 		});
 	}
 
-	add(card, { pile = 'deck' } = { }) {
+	/**
+	 * @type {number}
+	 */
+	get totalLength() {
+		return props.get(this).cards.size;
+	}
+
+	/**
+	 * @type {number}
+	 */
+	get remainingLength() {
+		return props.get(this).deck.length;
+	}
+
+	/**
+	 * @param card {Card}
+	 * @param pile {'deck'|'discard'|'held'}
+	 * @return void
+	 */
+	add(card, pile = 'deck') {
 		if (! piles.has(pile)) {
 			throw new Error(`Deck - cannot add card to unknown pile "${pile}"`);
 		}
@@ -31,34 +61,58 @@ const Deck = exports.Deck = class Deck {
 		_props.cards.add(card);
 		_props[pile].push(card);
 	}
-};
 
+	/**
+	 * @param card {Card}
+	 * @return void
+	 */
+	remove(card) {
+		const { cards, deck, discard, held } = props.get(this);
 
+		cards.delete(card);
+		remove(deck, card);
+		remove(discard, card);
+		remove(held, card);
 
-/**
- * Remove a card from the deck
- *
- * @access  public
- * @param   object    the card object
- * @return  void
- */
-Deck.prototype.remove = function(card) {
-	var self = this;
-	
-	Deck._remove(this.cards, card);
-	piles.forEach(function(pile) {
-		Deck._remove(self[pile], card);
-	});
-	
-	card.deck = null;
-};
+		card.deck = null;
+	}
 
-Deck._remove = function(pile, card) {
-	var index = pile.indexOf(card);
-	if (index >= 0) {
-		pile.splice(index, 1);
+	/**
+	 * @param count {number}
+	 * @return {Card[]}
+	 */
+	draw(count = 1) {
+		const { deck, held } = props.get(this);
+
+		if (! deck.length) {
+			throw new Error('Deck - Cannot draw from deck, no cards remaining');
+		}
+
+		const cards = a;
+	}
+
+	drawToDiscard() {
+		// 
+	}
+
+	discard() {
+		// 
 	}
 };
+
+const remove = (array, value) => {
+	const index = array.indexOf(value);
+
+	if (index >= 0) {
+		array.splice(index, 1);
+	}
+};
+
+
+
+
+
+
 
 /**
  * Draw a card(s) from the deck

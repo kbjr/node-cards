@@ -5,8 +5,24 @@ const { jokers } = require('../unicode');
 
 const props = new WeakMap();
 
-exports.FoolCard = class FoolCard extends Card {
-	constructor(color) {
+let preferedColor = 'black';
+
+const colors = new Set([ 'black', 'white', 'red' ]);
+
+exports.preferedJokerColor = (color) => {
+	if (! colors.has(color)) {
+		throw new Error('Unexpected color for joker; Must be "black", "white", or "red"');
+	}
+	
+	preferedColor = color;
+};
+
+exports.JokerCard = class JokerCard extends Card {
+	constructor(color = preferedColor) {
+		if (! colors.has(color)) {
+			throw new Error('Unexpected color for joker; Must be "black", "white", or "red"');
+		}
+	
 		super({
 			suit: none,
 			value: 0,

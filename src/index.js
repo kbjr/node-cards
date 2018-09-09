@@ -1,9 +1,7 @@
 
 const { useArc4, seedArc4 } = require('./rand');
 
-const { Card } = require('./card');
-const { Joker } = require('./card/joker');
-const { Maid } = require('./card/maid');
+const { Card, FoolCard, JokerCard, TrumpCard, MajorArcanaCard } = require('./card');
 
 const { Deck } = require('./deck');
 
@@ -13,8 +11,10 @@ module.exports = {
 	useArc4,
 	seedArc4,
 	Card,
-	Joker,
-	Maid,
+	FoolCard,
+	JokerCard,
+	TrumpCard,
+	MajorArcanaCard,
 	Deck,
 	unicode,
 };
