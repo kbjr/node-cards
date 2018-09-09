@@ -3,6 +3,13 @@ const { Card } = require('./card');
 const { shuffle } = require('./rand');
 
 /**
+ * @typedef CardPosition
+ * @property pile {string}
+ * @property index {number}
+ * @property card {Card}
+ */
+
+/**
  * @type {Map.<Deck, Object>}
  */
 const props = new WeakMap();
@@ -12,7 +19,7 @@ const props = new WeakMap();
  */
 const piles = new Set([ 'deck', 'discard', 'held' ]);
 
-const Deck = exports.Deck = class Deck {
+exports.Deck = class Deck {
 	/**
 	 * @param cards {Card[]}
 	 */
@@ -31,6 +38,8 @@ const Deck = exports.Deck = class Deck {
 	}
 
 	/**
+	 * The total number of cards belonging to this deck
+	 *
 	 * @type {number}
 	 */
 	get totalLength() {
@@ -38,6 +47,8 @@ const Deck = exports.Deck = class Deck {
 	}
 
 	/**
+	 * The current number of cards remaining in the deck pile
+	 *
 	 * @type {number}
 	 */
 	get remainingLength() {
@@ -45,6 +56,8 @@ const Deck = exports.Deck = class Deck {
 	}
 
 	/**
+	 * Add a new card to the deck, placing it in the given pile
+	 *
 	 * @param card {Card}
 	 * @param pile {'deck'|'discard'|'held'}
 	 * @return void
@@ -63,6 +76,8 @@ const Deck = exports.Deck = class Deck {
 	}
 
 	/**
+	 * Removes a card from the deck entirely
+	 *
 	 * @param card {Card}
 	 * @return void
 	 */
@@ -78,6 +93,8 @@ const Deck = exports.Deck = class Deck {
 	}
 
 	/**
+	 * Draw the given number of cards, places them in the held pile, and returns the drawn cards
+	 *
 	 * @param count {number}
 	 * @return {Card[]}
 	 */
@@ -88,15 +105,197 @@ const Deck = exports.Deck = class Deck {
 			throw new Error('Deck - Cannot draw from deck, no cards remaining');
 		}
 
-		const cards = a;
+		if (count < 0) {
+			return [ ];
+		}
+
+		const cards = deck.splice(0, count);
+
+		held.push(...cards);
+
+		return cards;
 	}
 
-	drawToDiscard() {
-		// 
+	/**
+	 * Draws the given number of cards, places them in the discard pile, and returns the drawn cards
+	 *
+	 * @param count {number}
+	 * @return {Card[]}
+	 */
+	drawToDiscard(count = 1) {
+		const { deck, discard } = props.get(this);
+
+		if (! deck.length) {
+			throw new Error('Deck - Cannot draw from deck, no cards remaining');
+		}
+
+		if (count < 0) {
+			return [ ];
+		}
+
+		const cards = deck.splice(0, count);
+
+		discard.push(...cards);
+
+		return cards;
 	}
 
-	discard() {
-		// 
+	/**
+	 * Moves the given card into the discard pile
+	 *
+	 * @param card {Card|Card[]}
+	 * @return {void}
+	 */
+	discard(card) {
+		if (Array.isArray(card)) {
+			card.forEach((card) => this.discard(card));
+		}
+
+		if (! (card instanceof Card)) {
+			throw new Error('Value provided is not a Card instance');
+		}
+
+		const { cards, deck, held, discard } = props.get(this);
+
+		if (! cards.has(card)) {
+			throw new Error('Provided card does not belong to this deck');
+		}
+
+		const deckIndex = deck.indexOf(card);
+
+		if (deckIndex >= 0) {
+			deck.splice(deckIndex, 1);
+			discard.push(card);
+		}
+
+		else {
+			const heldIndex = held.indexOf(card);
+
+			if (heldIndex >= 0) {
+				held.splice(heldIndex, 1);
+				discard.push(card);
+			}
+		}
+	}
+
+	/**
+	 * Finds the given card and returns an object representing its current location (pile, and index in that pile)
+	 *
+	 * @param card {Card}
+	 * @return {CardPosition}
+	 */
+	find(card) {
+		if (! (card instanceof Card)) {
+			throw new Error('Value provided is not a Card instance');
+		}
+
+		const { cards, deck, held, discard } = props.get(this);
+
+		if (! cards.has(card)) {
+			throw new Error('Provided card does not belong to this deck');
+		}
+
+		const deckIndex = deck.indexOf(card);
+
+		if (deckIndex >= 0) {
+			return {
+				pile: 'deck',
+				index: deckIndex,
+				card
+			};
+		}
+
+		const heldIndex = held.indexOf(card);
+
+		if (heldIndex >= 0) {
+			return {
+				pile: 'held',
+				index: heldIndex,
+				card
+			};
+		}
+
+		const discardIndex = discard.indexOf(card);
+
+		if (discardIndex >= 0) {
+			return {
+				pile: 'discard',
+				index: discardIndex,
+				card
+			};
+		}
+
+		// This should never happen
+		throw new Error('Failed to find the given card');
+	}
+
+	/**
+	 * Moves all cards back to the deck and shuffles the deck
+	 *
+	 * @return {void}
+	 */
+	shuffleAll() {
+		const { deck, held, discard } = props.get(this);
+
+		deck.push(...held);
+		deck.push(...discard);
+
+		held.length = 0;
+		discard.length = 0;
+
+		shuffle(deck);
+	}
+
+	/**
+	 * Shuffles the cards remaining in the deck
+	 *
+	 * @return {void}
+	 */
+	shuffleRemaining() {
+		shuffle(props.get(this).deck);
+	}
+
+	/**
+	 * Shuffles the cards in the discard pile and then places them at the end of the deck
+	 *
+	 * @return {void}
+	 */
+	shuffleDiscard() {
+		const { deck, discard } = props.get(this);
+
+		shuffle(discard);
+
+		deck.push(...discard);
+
+		discard.length = 0;
+	}
+
+	/**
+	 * Moves all cards in the discard back to the deck and shuffles the deck
+	 *
+	 * @return {void}
+	 */
+	shuffleDeckAndDiscard() {
+		const { deck, discard } = props.get(this);
+
+		deck.push(...discard);
+
+		discard.length = 0;
+
+		shuffle(deck);
+	}
+
+	/**
+	 * Moves all currently held cards to the discard pile
+	 *
+	 * @return {void}
+	 */
+	discardAllHeld() {
+		const { held, discard } = props.get(this);
+
+		discard.push(...held);
+
+		held.length = 0;
 	}
 };
 
@@ -106,165 +305,4 @@ const remove = (array, value) => {
 	if (index >= 0) {
 		array.splice(index, 1);
 	}
-};
-
-
-
-
-
-
-
-/**
- * Draw a card(s) from the deck
- *
- * @access  public
- * @param   number    the number of cards to draw
- * @param   object    the deck to draw into
- * @return  object
- */
-Deck.prototype.draw = function(count, _into) {
-	var self = this;
-	
-	if (! this.deck.length) {
-		throw new RangeError('Cannot draw card from deck; No cards remaining.');
-	}
-	
-	if (! count){
-		return this.deck.shiftInto(_into || this.held);
-	}
-	
-	var cards = [ ];
-	for (var i = 0; i < count; i++){	
-		cards.push(self.draw(0, _into || this.held));
-	}
-	
-	return cards;
-};
-
-/**
- * Draw a card(s) from the deck and discard
- *
- * @access  public
- * @param   number    the number of cards to draw
- * @return  object
- */
-Deck.prototype.drawToDiscard = function(count) {
-	return this.draw(count, this.discard);
-};
-
-/**
- * Discard a card
- *
- * @access  public
- * @param   object    the card object
- * @return  void
- */
-Deck.prototype.discard = function(card) {
-	if (Array.isArray(card) && typeof card[0] !== 'string') {
-		card.forEach(this.discard.bind(this));
-	}
-	
-	card = this.find(card);
-	if (! card) {
-		throw new Error('Given "card" value does not belong to this deck');
-	}
-	card.pile.splice(card.index, 1);
-	this.discard.push(card.card);
-};
-
-/**
- * Find a card object and its location
- *
- * @access  public
- * @param   object    the card to find
- * @return  object
- */
-Deck.prototype.find = function(card) {
-	var self = this;
-	if (Array.isArray(card)) { // Allow card to be an array [suit, value]
-		var cards = [ ];
-		card[1] = String(card[1]);
-		for (var i = 0, c = this.cards.length; i < c; i++) {
-			if (this.cards[i].suit === card[0] && this.cards[i].value === card[1]) {
-				cards.push(this.cards[i]);
-			}
-		}
-		return cards.map(this.find.bind(this));
-	}
-	if (! card instanceof Card) {
-		throw new Error('Cannot find non-card value');
-	}
-	var ret = null;
-	piles.forEach(function(pile) {
-		if (! ret) {
-			var index = self[pile].indexOf(card);
-			if (index >= 0) {
-				ret = [{
-					index: index,
-					pileName: pile,
-					pile: self[pile],
-					card: card
-				}];
-			}
-		}
-	});
-	return ret;
-};
-
-/**
- * Shuffle all cards into the deck pile
- *
- * @access  public
- * @return  void
- */
-Deck.prototype.shuffleAll = function() {
-	this.held.empty();
-	this.discard.empty();
-	this.deck.empty();
-	this.cards.copyInto(this.deck);
-	this.shuffleRemaining();
-};
-
-/**
- * Shuffle all cards remaining in the deck
- *
- * @access  public
- * @return  void
- */
-Deck.prototype.shuffleRemaining = function() {
-	shuffle(this.deck, exports.useArc4 ? 'ARC4' : 'SIMPLE');
-};
-
-/**
- * Shuffle the discard pile and append them to the deck
- *
- * @access  public
- * @return  void
- */
-Deck.prototype.shuffleDiscard = function() {
-	shuffle(this.discard, exports.useArc4 ? 'ARC4' : 'SIMPLE');
-	this.discard.emptyInto(this.deck);	
-};
-
-/**
- * Move all cards in the held pile to discard
- *
- * @access  public
- * @return  void
- */
-Deck.prototype.discardAllHeld = function() {
-	this.held.emptyInto(this.discard);
-};
-
-/**
- * Creates new simple deck constructors
- */
-Deck.createType = function(name, generator, constructor) {
-	exports[name] = function() {
-		Deck.call(this, generator);
-		if (typeof constructor === 'function') {
-			constructor.apply(this, arguments);
-		}
-	};
-	exports[name].prototype = new Deck();
 };

@@ -8,7 +8,7 @@ exports.TrumpCard = class TrumpCard extends Card {
 		super({
 			suit: trump,
 			value,
-			shortText: `Trump ${numerals[value]}`,
+			shortText: value ? `Trump ${numerals[value]}` : 'The Fool',
 			longText: `${names[value]} (${numerals[value]})`
 		});
 	}

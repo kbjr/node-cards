@@ -13,7 +13,7 @@ $ npm install cards
     - Suits: spades, hearts, diamonds, clubs
     - Values: 2 - 10, Jack, Queen, King, Ace
     - Supports the [Knight / Cavalier card](https://en.wikipedia.org/wiki/Knight_\(playing_card\)) card value found in some decks
-    - Supports the []() card value found in the Minor Arcana
+    - Supports the [Page](https://en.wikipedia.org/wiki/Page_of_Wands) card value found in the [Minor Arcana](https://en.wikipedia.org/wiki/Minor_Arcana)
   - Trump suit / Fool card
   - Minor Arcana
     - Suits: coins, wands, cups, swords
@@ -27,6 +27,7 @@ $ npm install cards
   - 48 card pinochel deck
   - 32 card piquet deck
   - 40 card baraja deck
+  - 22 card major arcana deck
   - Support for creating custom decks
 - Supports unicode playing card characters where available
 - Helper utilities for finding and ranking poker hands
