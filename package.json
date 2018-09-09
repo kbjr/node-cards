@@ -1,8 +1,8 @@
 {
-  "author": "James Brumond <james@jbrumond.me> (http://jbrumond.me)",
   "name": "cards",
   "description": "Basic playing cards module",
   "version": "0.1.1",
+  "author": "James Brumond <james@jbrumond.me> (http://jbrumond.me)",
   "repository": {
     "type": "git",
     "url": "git://github.com/kbjr/node-cards.git"
@@ -14,19 +14,11 @@
     "random",
     "shuffle"
   ],
-  "main": "lib/cards.js",
+  "main": "src/index.js",
   "dependencies": {
-    "rand-utils": "latest"
+    "rand-utils": "^1.0.0"
   },
   "devDependencies": {
-    "vows": "latest"
-  },
-  "optionalDependencies": {},
-  "license": "MIT",
-  "engines": {
-    "node": "*"
-  },
-  "scripts": {
-    "test": "node test/index.js"
+    "eslint": "^5.5.0"
   }
 }
