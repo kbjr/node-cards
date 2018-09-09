@@ -236,7 +236,7 @@ exports.Deck = class Deck {
 	 * @param card {Card}
 	 * @return {CardPosition}
 	 */
-	find(card) {
+	locateCard(card) {
 		if (! (card instanceof Card)) {
 			throw new Error('Value provided is not a Card instance');
 		}
@@ -348,6 +348,24 @@ exports.Deck = class Deck {
 		discard.push(...held);
 
 		held.length = 0;
+	}
+
+	/**
+	 * Finds all cards in the deck matching the given filtering function
+	 *
+	 * @param filter {(card : Card) => boolean}
+	 * @return {Card[]}
+	 */
+	findCards(filter) {
+		const matching = [ ];
+
+		props.get(this).cards.forEach((card) => {
+			if (filter(card)) {
+				matching.push(card);
+			}
+		});
+
+		return matching;
 	}
 };
 

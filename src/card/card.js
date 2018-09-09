@@ -25,6 +25,7 @@ exports.Card = class Card {
 		});
 
 		this.suit = suit;
+		this.name = shortText;
 		this.value = value;
 
 		Object.freeze(this);

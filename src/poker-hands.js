@@ -1,11 +1,8 @@
 
-const { Joker } = require('./card');
-
-// Ace also counts as low card for the purposes of a straight, but that is checked elsewhere
-const cardOrder = [ '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A' ];
+const { JokerCard } = require('./card');
 
 const jokersWild = (card) => {
-	// 
+	return card instanceof JokerCard;
 };
 
 exports.evaluateHand = (cards, { handSize = 5, isWild } = { }) => {
