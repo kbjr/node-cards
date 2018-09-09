@@ -1,8 +1,15 @@
 
 const { suits, spades, hearts, diamonds, clubs, trumps, majorArcana } = require('./unicode');
 
+/**
+ * @typedef SuitOptions
+ * @property name {string}
+ * @property unicodeSuit {string}
+ * @property unicodeCards {{ [value: string]: string }}
+ */
+
 const Suit = exports.Suit = class Suit {
-	constructor({ name, unicodeSuit, unicodeCards }) {
+	constructor(/** @type SuitOptions */ { name, unicodeSuit, unicodeCards }) {
 		this.name = name;
 		this.unicode = unicodeSuit;
 		this.unicodeCards = unicodeCards;

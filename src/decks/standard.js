@@ -3,8 +3,13 @@ const { Deck } = require('../deck');
 const { Card, JokerCard } = require('../card');
 const { spades, hearts, diamonds, clubs } = require ('../suits');
 
+/**
+ * @typedef StandardDeckOptions
+ * @property jokers {number=0}
+ */
+
 exports.StandardDeck = class StandardDeck extends Deck {
-	constructor({ jokers = 0 } = { }) {
+	constructor(/** @type {StandardDeckOptions} */ { jokers = 0 } = { }) {
 		super(generateDeck(jokers));
 	}
 };

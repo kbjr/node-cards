@@ -2,6 +2,7 @@
 const { useArc4, seedArc4 } = require('./rand');
 
 const { Card, FoolCard, JokerCard, TrumpCard, MajorArcanaCard } = require('./card');
+const { Suit, spades, hearts, diamonds, clubs, trump, swords, cups, coins, wands, majorArcana, none } = require('./suits');
 
 const { Deck } = require('./deck');
 const { StandardDeck } = require('./decks/standard');
@@ -28,5 +29,11 @@ module.exports = {
 	PinochelDeck,
 	BarajaDeck,
 	TarotDeck,
-	unicode
+	unicode,
+	Suit,
+	suits: {
+		spades, hearts, diamonds, clubs, trump,
+		swords, cups, coins, wands, majorArcana,
+		none
+	}
 };
