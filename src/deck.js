@@ -117,6 +117,32 @@ exports.Deck = class Deck {
 	}
 
 	/**
+	 * Draw the given number of cards from the bottom of the deck, places them in the held pile,
+	 * and returns the drawn cards
+	 *
+	 * @param count {number}
+	 * @return {Card[]}
+	 */
+	drawFromBottom(count = 1) {
+		const { deck, held } = props.get(this);
+
+		if (! deck.length) {
+			throw new Error('Deck - Cannot draw from deck, no cards remaining');
+		}
+
+		if (count < 0) {
+			return [ ];
+		}
+
+		const start = Math.max(deck.length - count, 0);
+		const cards = deck.splice(start, count).reverse();
+
+		held.push(...cards);
+
+		return cards;
+	}
+
+	/**
 	 * Draws the given number of cards, places them in the discard pile, and returns the drawn cards
 	 *
 	 * @param count {number}
@@ -134,6 +160,32 @@ exports.Deck = class Deck {
 		}
 
 		const cards = deck.splice(0, count);
+
+		discard.push(...cards);
+
+		return cards;
+	}
+
+	/**
+	 * Draw the given number of cards from the bottom of the deck, places them in the discard pile,
+	 * and returns the drawn cards
+	 *
+	 * @param count {number}
+	 * @return {Card[]}
+	 */
+	drawToDiscardFromBottom(count = 1) {
+		const { deck, discard } = props.get(this);
+
+		if (! deck.length) {
+			throw new Error('Deck - Cannot draw from deck, no cards remaining');
+		}
+
+		if (count < 0) {
+			return [ ];
+		}
+
+		const start = Math.max(deck.length - count, 0);
+		const cards = deck.splice(start, count).reverse();
 
 		discard.push(...cards);
 
