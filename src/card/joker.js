@@ -1,7 +1,7 @@
 
 const { Card } = require('./card');
 const { none } = require ('../suits');
-const { jokers } = require('../unicode');
+const { joker } = require('../ranks');
 
 const props = new WeakMap();
 
@@ -23,12 +23,7 @@ exports.JokerCard = class JokerCard extends Card {
 			throw new Error('Unexpected color for joker; Must be "black", "white", or "red"');
 		}
 	
-		super({
-			suit: none,
-			value: 0,
-			shortText: 'Joker',
-			longText: 'Joker'
-		});
+		super({ suit: none, rank: joker });
 
 		props.set(this, {
 			color
@@ -42,6 +37,6 @@ exports.JokerCard = class JokerCard extends Card {
 	}
 
 	get unicode() {
-		return jokers[props.get(this).color];
+		return super.unicode.get(props.get(this).color);
 	}
 };

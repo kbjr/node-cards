@@ -1,18 +1,15 @@
 
-const { suits, spades, hearts, diamonds, clubs, trumps, majorArcana } = require('./unicode');
-
-/**
- * @typedef SuitOptions
- * @property name {string}
- * @property unicodeSuit {string}
- * @property unicodeCards {{ [value: string]: string }}
- */
+const unicodeSuits = exports.unicodeSuits = new Map();
+const unicodeCards = exports.unicodeCards = new Map();
 
 const Suit = exports.Suit = class Suit {
-	constructor(/** @type SuitOptions */ { name, unicodeSuit, unicodeCards }) {
+	/**
+	 * The main class for representing a suit of cards
+	 *
+	 * @param name {string}
+	 */
+	constructor(name) {
 		this.name = name;
-		this.unicode = unicodeSuit;
-		this.unicodeCards = unicodeCards;
 
 		Object.freeze(this);
 	}
@@ -20,82 +17,29 @@ const Suit = exports.Suit = class Suit {
 	toString() {
 		return `<Suit ${this.name}>`;
 	}
+
+	get unicode() {
+		return unicodeSuits.get(this);
+	}
+
+	get unicodeCards() {
+		return unicodeCards.get(this);
+	}
 };
 
-
-
 // "Standard" Cards
-
-exports.spades = new Suit({
-	name: 'spades',
-	unicodeSuit: suits.spade,
-	unicodeCards: spades
-});
-
-exports.hearts = new Suit({
-	name: 'hearts',
-	unicodeSuit: suits.heart,
-	unicodeCards: hearts
-});
-
-exports.diamonds = new Suit({
-	name: 'diamonds',
-	unicodeSuit: suits.diamond,
-	unicodeCards: diamonds
-});
-
-exports.clubs = new Suit({
-	name: 'clubs',
-	unicodeSuit: suits.club,
-	unicodeCards: clubs
-});
-
-exports.trump = new Suit({
-	name: 'trump',
-	unicodeSuit: 'trump',
-	unicodeCards: trumps
-});
-
-
+exports.spades = new Suit('spades');
+exports.hearts = new Suit('hearts');
+exports.diamonds = new Suit('diamonds');
+exports.clubs = new Suit('clubs');
+exports.trump = new Suit('trump');
 
 // Minor / Major Arcana (Tarot)
-
-exports.swords = new Suit({
-	name: 'swords',
-	unicodeSuit: suits.sword,
-	unicodeCards: { }
-});
-
-exports.cups = new Suit({
-	name: 'cups',
-	unicodeSuit: suits.cup,
-	unicodeCards: { }
-});
-
-exports.coins = new Suit({
-	name: 'coins',
-	unicodeSuit: suits.coin,
-	unicodeCards: { }
-});
-
-exports.wands = new Suit({
-	name: 'wands',
-	unicodeSuit: suits.wand,
-	unicodeCards: { }
-});
-
-exports.majorArcana = new Suit({
-	name: 'major arcana',
-	unicodeSuit: 'major arcana',
-	unicodeCards: majorArcana
-});
-
-
+exports.swords = new Suit('swords');
+exports.cups = new Suit('cups');
+exports.coins = new Suit('coins');
+exports.wands = new Suit('wands');
+exports.majorArcana = new Suit('major arcana');
 
 // None
-
-exports.none = new Suit({
-	name: '',
-	unicodeSuit: '',
-	unicodeCards: { }
-});
+exports.none = new Suit('none');

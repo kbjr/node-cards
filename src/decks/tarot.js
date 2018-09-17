@@ -1,7 +1,14 @@
 
 const { Deck } = require('../deck');
-const { Card, MajorArcanaCard, TrumpCard } = require('../card');
-const { swords, cups, coins, wands } = require ('../suits');
+const { Card } = require('../card');
+const { swords, cups, coins, wands, trump, majorArcana } = require ('../suits');
+const {
+	ace, two, three, four, five, six, seven, eight, nine, ten, page, jack, queen, king,
+	arcana0, arcana1, arcana2, arcana3, arcana4, arcana5, arcana6, arcana7, arcana8, arcana9, arcana10,
+	arcana11, arcana12, arcana13, arcana14, arcana15, arcana16, arcana17, arcana18, arcana19, arcana20, arcana21,
+	trump0, trump1, trump2, trump3, trump4, trump5, trump6, trump7, trump8, trump9, trump10,
+	trump11, trump12, trump13, trump14, trump15, trump16, trump17, trump18, trump19, trump20, trump21
+} = require('../ranks');
 
 /**
  * @typedef TarotDeckOptions
@@ -15,22 +22,14 @@ exports.TarotDeck = class TarotDeck extends Deck {
 };
 
 const suits = [ swords, cups, coins, wands ];
-
-const cardTypes = [
-	{ value: 1,  shortText: 'A',  longText: 'Ace' },
-	{ value: 2,  shortText: '2',  longText: '2' },
-	{ value: 3,  shortText: '3',  longText: '3' },
-	{ value: 4,  shortText: '4',  longText: '4' },
-	{ value: 5,  shortText: '5',  longText: '5' },
-	{ value: 6,  shortText: '6',  longText: '6' },
-	{ value: 7,  shortText: '7',  longText: '7' },
-	{ value: 8,  shortText: '8',  longText: '8' },
-	{ value: 9,  shortText: '9',  longText: '9' },
-	{ value: 10, shortText: '10', longText: '10' },
-	{ value: 11, shortText: 'P',  longText: 'Page' },
-	{ value: 12, shortText: 'KN', longText: 'Knight' },
-	{ value: 13, shortText: 'Q',  longText: 'Queen' },
-	{ value: 14, shortText: 'K',  longText: 'King' }
+const ranks = [ ace, two, three, four, five, six, seven, eight, nine, ten, page, jack, queen, king ];
+const trumpRanks = [
+	trump0, trump1, trump2, trump3, trump4, trump5, trump6, trump7, trump8, trump9, trump10,
+	trump11, trump12, trump13, trump14, trump15, trump16, trump17, trump18, trump19, trump20, trump21
+];
+const arcanaRanks = [
+	arcana0, arcana1, arcana2, arcana3, arcana4, arcana5, arcana6, arcana7, arcana8, arcana9, arcana10,
+	arcana11, arcana12, arcana13, arcana14, arcana15, arcana16, arcana17, arcana18, arcana19, arcana20, arcana21
 ];
 
 const generateDeck = (trumpSuit) => {
@@ -38,20 +37,22 @@ const generateDeck = (trumpSuit) => {
 
 	// The minor arcana
 	suits.forEach((suit) => {
-		cardTypes.forEach(({ value, shortText, longText }) => {
-			cards.push(new Card({ suit, value, shortText, longText }));
+		ranks.forEach((rank) => {
+			cards.push(new Card(suit, rank));
 		});
 	});
 
 	// The major arcana
-	for (let i = 0; i < 22; i++) {
-		if (trumpSuit === 'modern') {
-			cards.push(new TrumpCard(i));
-		}
+	if (trumpSuit === 'modern') {
+		trumpRanks.forEach((rank) => {
+			cards.push(new Card(trump, rank));
+		});
+	}
 
-		else if (trumpSuit === 'traditional') {
-			cards.push(new MajorArcanaCard(i));
-		}
+	else if (trumpSuit === 'traditional') {
+		arcanaRanks.forEach((rank) => {
+			cards.push(new Card(majorArcana, rank));
+		});
 	}
 
 	return cards;

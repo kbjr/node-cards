@@ -1,38 +1,38 @@
 
 const { Deck } = require('../deck');
+const { Rank } = require('../ranks');
 const { Suit } = require('../suits');
 
 const props = new WeakMap();
 
-/**
- * @typedef CardOptions
- * @property suit {Suit}
- * @property value {number}
- * @property shortText {string}
- * @property longText {string}
- */
-
 exports.Card = class Card {
-	constructor(/** @type {CardOptions} */ { suit, value, shortText, longText }) {
+	/**
+	 * The main class for representing a single card
+	 *
+	 * @param suit {Suit}
+	 * @param rank {Rank}
+	 */
+	constructor(suit, rank) {
 		if (! (suit instanceof Suit)) {
-			throw new Error('Invalid card suit provided');
+			throw new Error('Invalid card suit provided, must be an instance of Suit');
+		}
+
+		if (! (rank instanceof Rank)) {
+			throw new Error('Invalid card rank provided, must be an instance of Rank');
 		}
 
 		props.set(this, {
-			deck: null,
-			shortText,
-			longText
+			deck: null
 		});
 
 		this.suit = suit;
-		this.name = shortText;
-		this.value = value;
+		this.rank = rank;
 
 		Object.freeze(this);
 	}
 	
 	toString() {
-		return `<Card suit=${this.suit} value=${this.value}>`;
+		return `<Card suit=${this.suit} value=${this.rank}>`;
 	}
 
 	/**
@@ -60,43 +60,9 @@ exports.Card = class Card {
 	}
 
 	/**
-	 * @type {string}
-	 */
-	get shortText() {
-		const { shortText } = props.get(this);
-
-		switch (this.suit.name) {
-			case '':
-			case 'trump':
-			case 'joker':
-				return shortText;
-
-			default:
-				return `${shortText}${this.suit.unicode}`;
-		}
-	}
-
-	/**
-	 * @type {string}
-	 */
-	get longText() {
-		const { longText } = props.get(this);
-
-		switch (this.suit.name) {
-			case '':
-			case 'trump':
-			case 'joker':
-				return longText;
-
-			default:
-				return `${longText} of ${this.suit.name}`;
-		}
-	}
-
-	/**
 	 * @type {string|void}
 	 */
 	get unicode() {
-		return this.suit.unicodeCards[this.value];
+		return this.suit.unicodeCards.get(this.rank);
 	}
 };

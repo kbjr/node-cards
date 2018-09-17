@@ -1,145 +1,180 @@
 
-exports.suits = Object.freeze({
-	heart:    '\u2665',
-	diamond:  '\u2666',
-	club:     '\u2663',
-	spade:    '\u2660',
-	sword:    '\u2628',
-	pentacle: '\u26AA',
-	cup:      '\u2615',
+// 
+// This files just contains a bunch of mappings of suits/ranks to various unicode characters
+// that can be used to render them in varying levels of "graphical" ways. There are a number
+// of these that don't really have good unicode representations, but this is mostly a "best match"
+// 
 
-	// This is currently the same as "club", update this if/when a more appropriate character exists
-	wand:     '\u2663'
-});
+const {
+	spades, hearts, diamonds, clubs, trump, swords, cups, coins, wands, majorArcana, none,
+	unicodeSuits, unicodeCards
+} = require('./suits');
+const {
+	ace, two, three, four, five, six, seven, eight, nine, ten, jack, queen, king, joker, one, cavalier, knight, page,
+	arcana0, arcana1, arcana2, arcana3, arcana4, arcana5, arcana6, arcana7, arcana8, arcana9, arcana10, arcana11,
+	arcana12, arcana13, arcana14, arcana15, arcana16, arcana17, arcana18, arcana19, arcana20, arcana21,
+	trump0, trump1, trump2, trump3, trump4, trump5, trump6, trump7, trump8, trump9, trump10, trump11,
+	trump12, trump13, trump14, trump15, trump16, trump17, trump18, trump19, trump20, trump21
+} = require('./ranks');
 
 exports.back = '\u{1F0A0}';
+exports.unicodeSuits = unicodeSuits;
+exports.unicodeCards = unicodeCards;
 
-exports.spades = Object.freeze({
-	'A':  '\u{1F0A1}',
-	'2':  '\u{1F0A2}',
-	'3':  '\u{1F0A3}',
-	'4':  '\u{1F0A4}',
-	'5':  '\u{1F0A5}',
-	'6':  '\u{1F0A6}',
-	'7':  '\u{1F0A7}',
-	'8':  '\u{1F0A8}',
-	'9':  '\u{1F0A9}',
-	'10': '\u{1F0AA}',
-	'J':  '\u{1F0AB}',
-	'KN': '\u{1F0AC}',
-	'Q':  '\u{1F0AD}',
-	'K':  '\u{1F0AE}'
-});
+unicodeSuits.set(spades,   '\u2660');
+unicodeSuits.set(hearts,   '\u2665');
+unicodeSuits.set(diamonds, '\u2666');
+unicodeSuits.set(clubs,    '\u2663');
+unicodeSuits.set(swords,   '\u2628');
+unicodeSuits.set(cups,     '\u2615');
+unicodeSuits.set(coins,    '\u26AA');
+// This is currently the same as "club", update this if/when a more appropriate character exists
+unicodeSuits.set(wands,    '\u2663');
 
-exports.hearts = Object.freeze({
-	'A':  '\u{1F0B1}',
-	'2':  '\u{1F0B2}',
-	'3':  '\u{1F0B3}',
-	'4':  '\u{1F0B4}',
-	'5':  '\u{1F0B5}',
-	'6':  '\u{1F0B6}',
-	'7':  '\u{1F0B7}',
-	'8':  '\u{1F0B8}',
-	'9':  '\u{1F0B9}',
-	'10': '\u{1F0BA}',
-	'J':  '\u{1F0BB}',
-	'KN': '\u{1F0BC}',
-	'Q':  '\u{1F0BD}',
-	'K':  '\u{1F0BE}'
-});
+// These don't really have a "suit" symbol
+unicodeSuits.set(trump,       null);
+unicodeSuits.set(majorArcana, null);
+unicodeSuits.set(none,        null);
 
-exports.diamonds = Object.freeze({
-	'A':  '\u{1F0C1}',
-	'2':  '\u{1F0C2}',
-	'3':  '\u{1F0C3}',
-	'4':  '\u{1F0C4}',
-	'5':  '\u{1F0C5}',
-	'6':  '\u{1F0C6}',
-	'7':  '\u{1F0C7}',
-	'8':  '\u{1F0C8}',
-	'9':  '\u{1F0C9}',
-	'10': '\u{1F0CA}',
-	'J':  '\u{1F0CB}',
-	'KN': '\u{1F0CC}',
-	'Q':  '\u{1F0CD}',
-	'K':  '\u{1F0CE}'
-});
+unicodeCards.set(spades, new Map([
+	[ ace,      '\u{1F0A1}' ],
+	[ one,      '\u{1F0A1}' ],
+	[ two,      '\u{1F0A2}' ],
+	[ three,    '\u{1F0A3}' ],
+	[ four,     '\u{1F0A4}' ],
+	[ five,     '\u{1F0A5}' ],
+	[ six,      '\u{1F0A6}' ],
+	[ seven,    '\u{1F0A7}' ],
+	[ eight,    '\u{1F0A8}' ],
+	[ nine,     '\u{1F0A9}' ],
+	[ ten,      '\u{1F0AA}' ],
+	[ jack,     '\u{1F0AB}' ],
+	[ cavalier, '\u{1F0AC}' ],
+	[ knight,   '\u{1F0AC}' ],
+	[ queen,    '\u{1F0AD}' ],
+	[ king,     '\u{1F0AE}' ],
+	[ page,     null ]
+]));
 
-exports.clubs = Object.freeze({
-	'A':  '\u{1F0D1}',
-	'2':  '\u{1F0D2}',
-	'3':  '\u{1F0D3}',
-	'4':  '\u{1F0D4}',
-	'5':  '\u{1F0D5}',
-	'6':  '\u{1F0D6}',
-	'7':  '\u{1F0D7}',
-	'8':  '\u{1F0D8}',
-	'9':  '\u{1F0D9}',
-	'10': '\u{1F0DA}',
-	'J':  '\u{1F0DB}',
-	'KN': '\u{1F0DC}',
-	'Q':  '\u{1F0DD}',
-	'K':  '\u{1F0DE}'
-});
+unicodeCards.set(hearts, new Map([
+	[ ace,      '\u{1F0B1}' ],
+	[ one,      '\u{1F0B1}' ],
+	[ two,      '\u{1F0B2}' ],
+	[ three,    '\u{1F0B3}' ],
+	[ four,     '\u{1F0B4}' ],
+	[ five,     '\u{1F0B5}' ],
+	[ six,      '\u{1F0B6}' ],
+	[ seven,    '\u{1F0B7}' ],
+	[ eight,    '\u{1F0B8}' ],
+	[ nine,     '\u{1F0B9}' ],
+	[ ten,      '\u{1F0BA}' ],
+	[ jack,     '\u{1F0BB}' ],
+	[ cavalier, '\u{1F0BC}' ],
+	[ knight,   '\u{1F0BC}' ],
+	[ queen,    '\u{1F0BD}' ],
+	[ king,     '\u{1F0BE}' ],
+	[ page,     null ]
+]));
 
-exports.jokers = Object.freeze({
-	'white': '\u{1F0BF}',
-	'red': '\u{1F0CF}',
-	'black': '\u{1F0DF}'
-});
+unicodeCards.set(diamonds, new Map([
+	[ ace,      '\u{1F0C1}' ],
+	[ one,      '\u{1F0C1}' ],
+	[ two,      '\u{1F0C2}' ],
+	[ three,    '\u{1F0C3}' ],
+	[ four,     '\u{1F0C4}' ],
+	[ five,     '\u{1F0C5}' ],
+	[ six,      '\u{1F0C6}' ],
+	[ seven,    '\u{1F0C7}' ],
+	[ eight,    '\u{1F0C8}' ],
+	[ nine,     '\u{1F0C9}' ],
+	[ ten,      '\u{1F0CA}' ],
+	[ jack,     '\u{1F0CB}' ],
+	[ cavalier, '\u{1F0CC}' ],
+	[ knight,   '\u{1F0CC}' ],
+	[ queen,    '\u{1F0CD}' ],
+	[ king,     '\u{1F0CE}' ],
+	[ page,     null ]
+]));
 
-exports.fool = '\u{1F0E0}';
+unicodeCards.set(clubs, new Map([
+	[ ace,      '\u{1F0D1}' ],
+	[ one,      '\u{1F0D1}' ],
+	[ two,      '\u{1F0D2}' ],
+	[ three,    '\u{1F0D3}' ],
+	[ four,     '\u{1F0D4}' ],
+	[ five,     '\u{1F0D5}' ],
+	[ six,      '\u{1F0D6}' ],
+	[ seven,    '\u{1F0D7}' ],
+	[ eight,    '\u{1F0D8}' ],
+	[ nine,     '\u{1F0D9}' ],
+	[ ten,      '\u{1F0DA}' ],
+	[ jack,     '\u{1F0DB}' ],
+	[ cavalier, '\u{1F0DC}' ],
+	[ knight,   '\u{1F0DC}' ],
+	[ queen,    '\u{1F0DD}' ],
+	[ king,     '\u{1F0DE}' ],
+	[ page,     null ]
+]));
 
-exports.trumps = Object.freeze({
-	'1':  '\u{1F0E1}',
-	'2':  '\u{1F0E2}',
-	'3':  '\u{1F0E3}',
-	'4':  '\u{1F0E4}',
-	'5':  '\u{1F0E5}',
-	'6':  '\u{1F0E6}',
-	'7':  '\u{1F0E7}',
-	'8':  '\u{1F0E8}',
-	'9':  '\u{1F0E9}',
-	'10': '\u{1F0EA}',
-	'11': '\u{1F0EB}',
-	'12': '\u{1F0EC}',
-	'13': '\u{1F0ED}',
-	'14': '\u{1F0EE}',
-	'15': '\u{1F0EF}',
-	'16': '\u{1F0F0}',
-	'17': '\u{1F0F1}',
-	'18': '\u{1F0F2}',
-	'19': '\u{1F0F3}',
-	'20': '\u{1F0F4}',
-	'21': '\u{1F0F5}'
-});
+unicodeCards.set(none, new Map([
+	[ joker, new Map([
+		[ 'white', '\u{1F0BF}' ],
+		[ 'red',   '\u{1F0CF}' ],
+		[ 'black', '\u{1F0DF}' ]
+	]) ]
+]));
+
+unicodeCards.set(trump, new Map([
+	[ trump0,  '\u{1F0E0}' ],
+	[ trump1,  '\u{1F0E1}' ],
+	[ trump2,  '\u{1F0E2}' ],
+	[ trump3,  '\u{1F0E3}' ],
+	[ trump4,  '\u{1F0E4}' ],
+	[ trump5,  '\u{1F0E5}' ],
+	[ trump6,  '\u{1F0E6}' ],
+	[ trump7,  '\u{1F0E7}' ],
+	[ trump8,  '\u{1F0E8}' ],
+	[ trump9,  '\u{1F0E9}' ],
+	[ trump10, '\u{1F0EA}' ],
+	[ trump11, '\u{1F0EB}' ],
+	[ trump12, '\u{1F0EC}' ],
+	[ trump13, '\u{1F0ED}' ],
+	[ trump14, '\u{1F0EE}' ],
+	[ trump15, '\u{1F0EF}' ],
+	[ trump16, '\u{1F0F0}' ],
+	[ trump17, '\u{1F0F1}' ],
+	[ trump18, '\u{1F0F2}' ],
+	[ trump19, '\u{1F0F3}' ],
+	[ trump20, '\u{1F0F4}' ],
+	[ trump21, '\u{1F0F5}' ]
+]));
 
 // For the time being, these are mapped to the trump characters. There was at one point a proposal to
 // add proper tarot cards to the spec (https://www.unicode.org/L2/L2011/11216-n4089-playingcards.pdf),
 // as well as a proposal to add variant selectors to the existing cards to add support for tarot cards
 // (https://www.unicode.org/L2/L2014/14223-tarot.pdf) but it seems to so far neither have been followed
 // through with. If that ever happens, update these to point to the actual, correct characters
-exports.majorArcana = Object.freeze({
-	'0':  '\u{1F0E0}',
-	'1':  '\u{1F0E1}',
-	'2':  '\u{1F0E2}',
-	'3':  '\u{1F0E3}',
-	'4':  '\u{1F0E4}',
-	'5':  '\u{1F0E5}',
-	'6':  '\u{1F0E6}',
-	'7':  '\u{1F0E7}',
-	'8':  '\u{1F0E8}',
-	'9':  '\u{1F0E9}',
-	'10': '\u{1F0EA}',
-	'11': '\u{1F0EB}',
-	'12': '\u{1F0EC}',
-	'13': '\u{1F0ED}',
-	'14': '\u{1F0EE}',
-	'15': '\u{1F0EF}',
-	'16': '\u{1F0F0}',
-	'17': '\u{1F0F1}',
-	'18': '\u{1F0F2}',
-	'19': '\u{1F0F3}',
-	'20': '\u{1F0F4}',
-	'21': '\u{1F0F5}'
-});
+unicodeCards.set(majorArcana, new Map([
+	[ arcana0,  '\u{1F0E0}' ],
+	[ arcana1,  '\u{1F0E1}' ],
+	[ arcana2,  '\u{1F0E2}' ],
+	[ arcana3,  '\u{1F0E3}' ],
+	[ arcana4,  '\u{1F0E4}' ],
+	[ arcana5,  '\u{1F0E5}' ],
+	[ arcana6,  '\u{1F0E6}' ],
+	[ arcana7,  '\u{1F0E7}' ],
+	[ arcana8,  '\u{1F0E8}' ],
+	[ arcana9,  '\u{1F0E9}' ],
+	[ arcana10, '\u{1F0EA}' ],
+	[ arcana11, '\u{1F0EB}' ],
+	[ arcana12, '\u{1F0EC}' ],
+	[ arcana13, '\u{1F0ED}' ],
+	[ arcana14, '\u{1F0EE}' ],
+	[ arcana15, '\u{1F0EF}' ],
+	[ arcana16, '\u{1F0F0}' ],
+	[ arcana17, '\u{1F0F1}' ],
+	[ arcana18, '\u{1F0F2}' ],
+	[ arcana19, '\u{1F0F3}' ],
+	[ arcana20, '\u{1F0F4}' ],
+	[ arcana21, '\u{1F0F5}' ]
+]));

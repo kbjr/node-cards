@@ -1,14 +1,22 @@
 
 const { Deck } = require('../deck');
-const { MajorArcanaCard } = require('../card');
+const { Card } = require('../card');
+const { majorArcana } = require('../suits');
+const {
+	arcana0, arcana1, arcana2, arcana3, arcana4, arcana5, arcana6, arcana7, arcana8, arcana9, arcana10,
+	arcana11, arcana12, arcana13, arcana14, arcana15, arcana16, arcana17, arcana18, arcana19, arcana20, arcana21
+} = require('../ranks');
+
+const ranks = [
+	arcana0, arcana1, arcana2, arcana3, arcana4, arcana5, arcana6, arcana7, arcana8, arcana9, arcana10,
+	arcana11, arcana12, arcana13, arcana14, arcana15, arcana16, arcana17, arcana18, arcana19, arcana20, arcana21
+];
 
 exports.MajorArcanaDeck = class MajorArcanaDeck extends Deck {
 	constructor() {
-		const cards = [ ];
-
-		for (let i = 0; i < 22; i++) {
-			cards.push(new MajorArcanaCard(i));
-		}
+		const cards = ranks.map((rank) => {
+			return new Card(majorArcana, rank);
+		});
 
 		super(cards);
 	}
