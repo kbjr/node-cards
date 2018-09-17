@@ -1,11 +1,11 @@
 
-const { StandardDeck } = require('./decks/standard');
-const { MajorArcanaDeck } = require('./decks/major-arcana');
-const { EuchreDeck } = require('./decks/euchre');
-const { PinochelDeck } = require('./decks/pinochel');
-const { BarajaDeck } = require('./decks/baraja');
-const { TarotDeck } = require('./decks/tarot');
-const { PiquetDeck } = require('./decks/piquet');
+const { StandardDeck } = require('./standard');
+const { MajorArcanaDeck } = require('./major-arcana');
+const { EuchreDeck } = require('./euchre');
+const { PinochelDeck } = require('./pinochel');
+const { BarajaDeck } = require('./baraja');
+const { TarotDeck } = require('./tarot');
+const { PiquetDeck } = require('./piquet');
 
 module.exports = {
 	StandardDeck,

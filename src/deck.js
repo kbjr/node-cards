@@ -64,7 +64,7 @@ exports.Deck = class Deck {
 	 */
 	add(card, pile = 'deck') {
 		if (! piles.has(pile)) {
-			throw new Error(`Deck - cannot add card to unknown pile "${pile}"`);
+			throw new Error(`Deck: cannot add card to unknown pile "${pile}"`);
 		}
 
 		const _props = props.get(this);
@@ -102,7 +102,7 @@ exports.Deck = class Deck {
 		const { deck, held } = props.get(this);
 
 		if (! deck.length) {
-			throw new Error('Deck - Cannot draw from deck, no cards remaining');
+			throw new Error('Deck: Cannot draw from deck, no cards remaining');
 		}
 
 		if (count < 0) {
@@ -127,7 +127,7 @@ exports.Deck = class Deck {
 		const { deck, held } = props.get(this);
 
 		if (! deck.length) {
-			throw new Error('Deck - Cannot draw from deck, no cards remaining');
+			throw new Error('Deck: Cannot draw from deck, no cards remaining');
 		}
 
 		if (count < 0) {
@@ -152,7 +152,7 @@ exports.Deck = class Deck {
 		const { deck, discard } = props.get(this);
 
 		if (! deck.length) {
-			throw new Error('Deck - Cannot draw from deck, no cards remaining');
+			throw new Error('Deck: Cannot draw from deck, no cards remaining');
 		}
 
 		if (count < 0) {
@@ -177,7 +177,7 @@ exports.Deck = class Deck {
 		const { deck, discard } = props.get(this);
 
 		if (! deck.length) {
-			throw new Error('Deck - Cannot draw from deck, no cards remaining');
+			throw new Error('Deck: Cannot draw from deck, no cards remaining');
 		}
 
 		if (count < 0) {
@@ -204,13 +204,13 @@ exports.Deck = class Deck {
 		}
 
 		if (! (card instanceof Card)) {
-			throw new Error('Value provided is not a Card instance');
+			throw new Error('Deck: Value provided is not a Card instance');
 		}
 
 		const { cards, deck, held, discard } = props.get(this);
 
 		if (! cards.has(card)) {
-			throw new Error('Provided card does not belong to this deck');
+			throw new Error('Deck: Provided card does not belong to this deck');
 		}
 
 		const deckIndex = deck.indexOf(card);

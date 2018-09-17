@@ -14,11 +14,11 @@ exports.Card = class Card {
 	 */
 	constructor(suit, rank) {
 		if (! (suit instanceof Suit)) {
-			throw new Error('Invalid card suit provided, must be an instance of Suit');
+			throw new Error('Card: Invalid card suit provided, must be an instance of Suit');
 		}
 
 		if (! (rank instanceof Rank)) {
-			throw new Error('Invalid card rank provided, must be an instance of Rank');
+			throw new Error('Card: Invalid card rank provided, must be an instance of Rank');
 		}
 
 		props.set(this, {

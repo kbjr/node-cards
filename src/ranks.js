@@ -10,6 +10,10 @@ const Rank = exports.Rank = class Rank {
 		this.shortName = shortName;
 		this.longName = longName;
 	}
+
+	toString() {
+		return `<Rank shortName=${this.shortName} longName=${this.longName}>`;
+	}
 };
 
 // Standard card ranks
