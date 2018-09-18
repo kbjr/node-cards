@@ -28,7 +28,7 @@ exports.preferedJokerColor = (color) => {
 /**
  * @class JokerCard
  * @extends Card
- * @param color {'red'|'black'|'white'} - Defaults to whatever is set as the prefered color
+ * @param color {('red'|'black'|'white')?} - Defaults to whatever is set as the prefered color
  * @see preferedJokerColor
  * @description Special sub-class for representing Joker cards
  */

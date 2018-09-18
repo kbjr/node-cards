@@ -12,7 +12,11 @@ const ranks = [
 	arcana11, arcana12, arcana13, arcana14, arcana15, arcana16, arcana17, arcana18, arcana19, arcana20, arcana21
 ];
 
-exports.MajorArcanaDeck = class MajorArcanaDeck extends Deck {
+/**
+ * @class MajorArcanaDeck
+ * @extends Deck
+ */
+class MajorArcanaDeck extends Deck {
 	constructor() {
 		const cards = ranks.map((rank) => {
 			return new Card(majorArcana, rank);
@@ -20,4 +24,6 @@ exports.MajorArcanaDeck = class MajorArcanaDeck extends Deck {
 
 		super(cards);
 	}
-};
+}
+
+exports.MajorArcanaDeck = MajorArcanaDeck;

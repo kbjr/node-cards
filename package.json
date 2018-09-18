@@ -4,7 +4,7 @@
   "version": "0.1.1",
   "author": "James Brumond <james@jbrumond.me> (http://jbrumond.me)",
   "scripts": {
-    "jsdocs": "jsdoc ./src/ ./readme.md -r -d ./docs/ -c ./.jsdocs.json"
+    "jsdocs": "jsdoc -c ./.jsdocs.json"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "eslint": "^5.5.0",
-    "jsdoc": "^3.5.5"
+    "jsdoc": "^3.5.5",
+    "jsdoc-template": "^1.2.0"
   }
 }

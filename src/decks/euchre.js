@@ -4,11 +4,17 @@ const { Card } = require('../card');
 const { spades, hearts, diamonds, clubs } = require ('../suits');
 const { ace, nine, ten, jack, queen, king } = require('../ranks');
 
-exports.EuchreDeck = class EuchreDeck extends Deck {
+/**
+ * @class EuchreDeck
+ * @extends Deck
+ */
+class EuchreDeck extends Deck {
 	constructor() {
 		super(generateDeck());
 	}
-};
+}
+
+exports.EuchreDeck = EuchreDeck;
 
 const suits = [ spades, hearts, diamonds, clubs ];
 const ranks = [ ace, nine, ten, jack, queen, king ];

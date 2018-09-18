@@ -19,11 +19,39 @@ const { PiquetDeck } = require('./piquet');
  */
 
 module.exports = {
+	/**
+	 * @member StandardDeck
+	 * @see StandardDeck
+	 */
 	StandardDeck,
+	/**
+	 * @member MajorArcanaDeck
+	 * @see MajorArcanaDeck
+	 */
 	MajorArcanaDeck,
+	/**
+	 * @member EuchreDeck
+	 * @see EuchreDeck
+	 */
 	EuchreDeck,
+	/**
+	 * @member PinochelDeck
+	 * @see PinochelDeck
+	 */
 	PinochelDeck,
+	/**
+	 * @member BarajaDeck
+	 * @see BarajaDeck
+	 */
 	BarajaDeck,
+	/**
+	 * @member TarotDeck
+	 * @see TarotDeck
+	 */
 	TarotDeck,
+	/**
+	 * @member PiquetDeck
+	 * @see PiquetDeck
+	 */
 	PiquetDeck
 };
