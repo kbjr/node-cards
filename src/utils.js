@@ -8,3 +8,19 @@ exports.indexArray = (array) => {
 
 	return map;
 };
+
+exports.max = (array, getValue) => {
+	let highItem;
+	let highValue = -Infinity;
+
+	array.forEach((item) => {
+		const value = getValue(item);
+
+		if (value > highValue) {
+			highItem = item;
+			highValue = value;
+		}
+	});
+
+	return highItem;
+};

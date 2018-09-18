@@ -3,7 +3,8 @@ const { max, indexArray } = require('../utils');
 const { HighCard } = require('./hand');
 const { StraightFlush, Flush, Straight } = require('./straights-and-flushes');
 const { FiveOfAKind, FourOfAKind, FullHouse, ThreeOfAKind, TwoPair, Pair } = require('./x-of-a-kind');
-const { Rank, ace, two, three, four, five, six, seven, eight, nine, ten, jack, queen, king } = require('../ranks');
+const { Rank } = require('../rank');
+const { ace, two, three, four, five, six, seven, eight, nine, ten, jack, queen, king } = require('../ranks');
 
 exports.acesLowRankOrder = indexArray([ ace, two, three, four, five, six, seven, eight, nine, ten, jack, queen, king ]);
 exports.acesHighRankOrder = indexArray([ two, three, four, five, six, seven, eight, nine, ten, jack, queen, king, ace ]);

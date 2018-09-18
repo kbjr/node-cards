@@ -3,26 +3,22 @@ const { Card } = require('./card');
 const { shuffle } = require('./rand');
 
 /**
- * @typedef CardPosition
- * @property pile {string}
- * @property index {number}
- * @property card {Card}
- */
-
-/**
+ * @private
  * @type {Map.<Deck, Object>}
  */
 const props = new WeakMap();
 
 /**
+ * @private
  * @type {Set.<string>}
  */
 const piles = new Set([ 'deck', 'discard', 'held' ]);
 
-exports.Deck = class Deck {
-	/**
-	 * @param cards {Card[]}
-	 */
+/**
+ * @class Deck
+ * @param cards {Card[]}
+ */
+class Deck {
 	constructor(cards = [ ]) {
 		props.set(this, {
 			cards: new Set(cards),
@@ -38,18 +34,16 @@ exports.Deck = class Deck {
 	}
 
 	/**
-	 * The total number of cards belonging to this deck
-	 *
 	 * @type {number}
+	 * @description The total number of cards belonging to this deck
 	 */
 	get totalLength() {
 		return props.get(this).cards.size;
 	}
 
 	/**
-	 * The current number of cards remaining in the deck pile
-	 *
 	 * @type {number}
+	 * @description The current number of cards remaining in the deck pile
 	 */
 	get remainingLength() {
 		return props.get(this).deck.length;
@@ -234,7 +228,7 @@ exports.Deck = class Deck {
 	 * Finds the given card and returns an object representing its current location (pile, and index in that pile)
 	 *
 	 * @param card {Card}
-	 * @return {CardPosition}
+	 * @return {{ pile: 'deck'|'discard'|'held', index: number, card: Card }}
 	 */
 	locateCard(card) {
 		if (! (card instanceof Card)) {
@@ -351,12 +345,6 @@ exports.Deck = class Deck {
 	}
 
 	/**
-	 * @callback filterCards
-	 * @param card {Card}
-	 * @return {boolean}
-	 */
-
-	/**
 	 * Finds all cards in the deck matching the given filtering function
 	 *
 	 * ```javascript
@@ -377,7 +365,9 @@ exports.Deck = class Deck {
 
 		return matching;
 	}
-};
+}
+
+exports.Deck = Deck;
 
 const remove = (array, value) => {
 	const index = array.indexOf(value);

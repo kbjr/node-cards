@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: rank.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,49 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: rank.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
+/**
+ * @class
+ * 
+ * The main base class for representing a rank of card (eg. "ace" or "king")
+ *
+ * @param shortName {string}
+ * @param longName {string}
+ */
+class Rank {
+	constructor(shortName, longName) {
+		/** @member {string} */
+		this.shortName = shortName;
 
+		/** @member {string} */
+		this.longName = longName;
+	}
 
-    <h3> </h3>
+	/**
+	 * Returns a human-readable string representation of the rank object
+	 *
+	 * eg. `"&lt;Rank shortName=A longName=Ace>"`
+	 *
+	 * @return {string}
+	 */
+	toString() {
+		return `&lt;Rank shortName=${this.shortName} longName=${this.longName}>`;
+	}
+}
 
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+exports.Rank = Rank;
+</code></pre>
+        </article>
+    </section>
 
 
 

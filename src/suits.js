@@ -1,31 +1,5 @@
 
-const unicodeSuits = exports.unicodeSuits = new Map();
-const unicodeCards = exports.unicodeCards = new Map();
-
-const Suit = exports.Suit = class Suit {
-	/**
-	 * The main class for representing a suit of cards
-	 *
-	 * @param name {string}
-	 */
-	constructor(name) {
-		this.name = name;
-
-		Object.freeze(this);
-	}
-
-	toString() {
-		return `<Suit ${this.name}>`;
-	}
-
-	get unicode() {
-		return unicodeSuits.get(this);
-	}
-
-	get unicodeCards() {
-		return unicodeCards.get(this);
-	}
-};
+const { Suit } = require('./suit');
 
 // "Standard" Cards
 exports.spades = new Suit('spades');

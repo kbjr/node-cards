@@ -1,7 +1,8 @@
 
 const { Card } = require('./card');
 const { none } = require ('../suits');
-const { Rank, joker } = require('../ranks');
+const { Rank } = require('../rank');
+const { joker } = require('../ranks');
 
 const props = new WeakMap();
 

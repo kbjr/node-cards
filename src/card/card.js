@@ -1,7 +1,7 @@
 
 const { Deck } = require('../deck');
-const { Rank } = require('../ranks');
-const { Suit } = require('../suits');
+const { Rank } = require('../rank');
+const { Suit } = require('../suit');
 
 const props = new WeakMap();
 
