@@ -1,5 +1,5 @@
 
-const { Rank } = require('./rank');
+const { Rank } = require('../rank');
 
 /**
  * @alias module:ranks.trump0

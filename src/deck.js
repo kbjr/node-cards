@@ -194,7 +194,7 @@ class Deck {
 	 */
 	discard(card) {
 		if (Array.isArray(card)) {
-			card.forEach((card) => this.discard(card));
+			return card.forEach((card) => this.discard(card));
 		}
 
 		if (! (card instanceof Card)) {

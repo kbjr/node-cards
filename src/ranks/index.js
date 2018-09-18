@@ -2,7 +2,7 @@
 const standard    = require('./standard');
 const nonStandard = require('./non-standard');
 const trump       = require('./trump');
-const majorArcana = require('./majorArcana');
+const majorArcana = require('./major-arcana');
 
 /**
  * @module ranks

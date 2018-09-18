@@ -1,5 +1,4 @@
 
-const { Deck } = require('../deck');
 const { Rank } = require('../rank');
 const { Suit } = require('../suit');
 
@@ -54,6 +53,8 @@ class Card {
 	}
 
 	set deck(deck) {
+		const { Deck } = require('../deck');
+
 		const _props = props.get(this);
 
 		if (deck instanceof Deck) {

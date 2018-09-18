@@ -38,7 +38,7 @@ class JokerCard extends Card {
 			throw new Error('Unexpected color for joker; Must be "black", "white", or "red"');
 		}
 	
-		super({ suit: none, rank: joker });
+		super(none, joker);
 
 		props.set(this, {
 			color,
@@ -67,16 +67,16 @@ class JokerCard extends Card {
 		return super.unicode.get(props.get(this).color);
 	}
 
-	/** @type {Rank} */
-	get rank() {
-		return props.get(this).rank;
-	}
+	// /** @type {Rank} */
+	// get rank() {
+	// 	return props.get(this).rank;
+	// }
 
-	set rank(rank) {
-		if (rank instanceof Rank) {
-			props.get(this).rank = rank;
-		}
-	}
+	// set rank(rank) {
+	// 	if (rank instanceof Rank) {
+	// 		props.get(this).rank = rank;
+	// 	}
+	// }
 }
 
 exports.JokerCard = JokerCard;

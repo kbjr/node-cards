@@ -21,10 +21,8 @@
  * ```
  */
 
-const {
-	spades, hearts, diamonds, clubs, trump, swords, cups, coins, wands, majorArcana, none,
-	unicodeSuits, unicodeCards
-} = require('./suits');
+const { unicodeSuits, unicodeCards } = require('./suit');
+const { spades, hearts, diamonds, clubs, trump, swords, cups, coins, wands, majorArcana, none } = require('./suits');
 const {
 	ace, two, three, four, five, six, seven, eight, nine, ten, jack, queen, king, joker, one, cavalier, knight, page,
 	arcana0, arcana1, arcana2, arcana3, arcana4, arcana5, arcana6, arcana7, arcana8, arcana9, arcana10, arcana11,
