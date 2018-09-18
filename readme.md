@@ -3,6 +3,10 @@ Node.js library for dealing with playing cards of all types
 
 [https://github.com/kbjr/node-cards](https://github.com/kbjr/node-cards)
 
+Fully extensible, you can create custom versions of any component to make different types of deck, including support for custom decks, suits, ranks, and cards.
+
+And the API is fully documented at http://kbjr.github.io/node-cards/index.html
+
 ### Install
 
 ```bash
