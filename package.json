@@ -1,7 +1,7 @@
 {
   "name": "cards",
   "description": "Basic playing cards module",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "author": "James Brumond <james@jbrumond.me> (http://jbrumond.me)",
   "scripts": {
     "jsdocs": "jsdoc -c ./.jsdocs.json"
