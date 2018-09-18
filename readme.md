@@ -1,4 +1,10 @@
 
+Node.js library for dealing with playing cards of all types
+
+[https://github.com/kbjr/node-cards](https://github.com/kbjr/node-cards)
+
+### Install
+
 ```bash
 $ npm install cards
 ```
@@ -12,12 +18,10 @@ $ npm install cards
   - Standard suits and values
     - Suits: spades, hearts, diamonds, clubs
     - Values: 2 - 10, Jack, Queen, King, Ace
-    - Supports the [Knight / Cavalier card](https://en.wikipedia.org/wiki/Knight_\(playing_card\)) card value found in some decks
-    - Supports the [Page](https://en.wikipedia.org/wiki/Page_of_Wands) card value found in the [Minor Arcana](https://en.wikipedia.org/wiki/Minor_Arcana)
   - Trump suit / Fool card
-  - Minor Arcana
+  - [Minor Arcana][1]
     - Suits: coins, wands, cups, swords
-    - Values: 2 - 10, Page, Knight, Queen, King, Ace
+    - Values: 2 - 10, [Page](https://en.wikipedia.org/wiki/Page_of_Wands), [Knight / Cavalier][2], Queen, King, Ace
   - Major Arcana (Tarot cards)
   - Jokers
 - Deck types
@@ -30,16 +34,14 @@ $ npm install cards
   - 22 card major arcana deck
   - Support for creating custom decks
 - Supports unicode playing card characters where available
-- Helper utilities for finding and ranking poker hands
-  - Includes support for defining rules around wild cards
 
 ### Example
 
 ```javascript
-const { StandardDeck } = require('cards');
+const { decks } = require('cards');
 
 // Create a standard 52 card deck + 2 jokers
-const deck = new StandardDeck({ jokers: 2 });
+const deck = new decks.StandardDeck({ jokers: 2 });
 
 // Shuffle the deck
 deck.shuffleAll();
@@ -59,4 +61,7 @@ hand.push(...deck.draw(2));
 
 ### TODO
 
-- Finish building out docs
+- Finish building out poker hand evaluation logic
+
+[1]: https://en.wikipedia.org/wiki/Minor_Arcana
+[2]: https://en.wikipedia.org/wiki/Knight_(playing_card)

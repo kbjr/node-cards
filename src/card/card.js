@@ -5,13 +5,13 @@ const { Suit } = require('../suit');
 
 const props = new WeakMap();
 
+/**
+ * @class Card
+ * @param suit {Suit}
+ * @param rank {Rank}
+ * @description The main class for representing a single card
+ */
 class Card {
-	/**
-	 * The main class for representing a single card
-	 *
-	 * @param suit {Suit}
-	 * @param rank {Rank}
-	 */
 	constructor(suit, rank) {
 		if (! (suit instanceof Suit)) {
 			throw new Error('Card: Invalid card suit provided, must be an instance of Suit');
@@ -25,18 +25,29 @@ class Card {
 			deck: null
 		});
 
+		/** @member {Suit} */
 		this.suit = suit;
+
+		/** @member {Rank} */
 		this.rank = rank;
 
 		Object.freeze(this);
 	}
 	
+	/**
+	 * Returns a human-readable string representation of the card object
+	 *
+	 * eg. `"<Card suit=spades rank=Ace>"`
+	 *
+	 * @return {string}
+	 */
 	toString() {
-		return `<Card suit=${this.suit} value=${this.rank}>`;
+		return `<Card suit=${this.suit.name} value=${this.rank.longName}>`;
 	}
 
 	/**
 	 * @type {Deck}
+	 * @description The deck instance that this card belongs to
 	 */
 	get deck() {
 		return props.get(this).deck;
@@ -61,6 +72,7 @@ class Card {
 
 	/**
 	 * @type {string|void}
+	 * @description The unicode character that represents this particular card if one exists
 	 */
 	get unicode() {
 		return this.suit.unicodeCards.get(this.rank);

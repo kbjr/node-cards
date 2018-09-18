@@ -1,7 +1,7 @@
 
 const { useArc4, seedArc4, shuffle } = require('./rand');
 
-const { Card, JokerCard } = require('./card');
+const { Card, JokerCard, preferedJokerColor } = require('./card');
 const { Suit, spades, hearts, diamonds, clubs, trump, swords, cups, coins, wands, majorArcana, none } = require('./suits');
 const { Rank } = require('./rank');
 const {
@@ -49,6 +49,11 @@ module.exports = {
 	 */
 	JokerCard,
 	/**
+	 * @member preferedJokerColor
+	 * @see preferedJokerColor
+	 */
+	preferedJokerColor,
+	/**
 	 * @member Deck
 	 * @see Deck
 	 */
@@ -91,5 +96,9 @@ module.exports = {
 		trump0, trump1, trump2, trump3, trump4, trump5, trump6, trump7, trump8, trump9, trump10, trump11,
 		trump12, trump13, trump14, trump15, trump16, trump17, trump18, trump19, trump20, trump21
 	},
+	/**
+	 * @alias module:cards.unicode
+	 * @see module:unicode
+	 */
 	unicode
 };

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Card</title>
+    <title>JSDoc: Class: JokerCard</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Card</h1>
+    <h1 class="page-title">Class: JokerCard</h1>
 
     
 
@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>Card<span class="signature">(suit, rank)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>JokerCard<span class="signature">(color)</span><span class="type-signature"></span></h2>
         
     
 </header>
@@ -41,7 +41,7 @@
     
 
     
-    <h4 class="name" id="Card"><span class="type-signature"></span>new Card<span class="signature">(suit, rank)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="JokerCard"><span class="type-signature"></span>new JokerCard<span class="signature">(color)</span><span class="type-signature"></span></h4>
     
 
     
@@ -49,7 +49,7 @@
 
 
 <div class="description">
-    <p>The main class for representing a single card</p>
+    <p>Special sub-class for representing Joker cards</p>
 </div>
 
 
@@ -85,13 +85,19 @@
 
         <tr>
             
-                <td class="name"><code>suit</code></td>
+                <td class="name"><code>color</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="Suit.html">Suit</a></span>
+<span class="param-type">'red'</span>
+|
+
+<span class="param-type">'black'</span>
+|
+
+<span class="param-type">'white'</span>
 
 
             
@@ -101,30 +107,7 @@
 
             
 
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>rank</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="Rank.html">Rank</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
+            <td class="description last"><p>Defaults to whatever is set as the prefered color</p></td>
         </tr>
 
     
@@ -165,12 +148,19 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="card_card.js.html">card/card.js</a>, <a href="card_card.js.html#line8">line 8</a>
+        <a href="card_joker.js.html">card/joker.js</a>, <a href="card_joker.js.html#line28">line 28</a>
     </li></ul></dd>
     
 
     
 
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="global.html#preferedJokerColor">preferedJokerColor</a></li>
+        </ul>
+    </dd>
     
 
     
@@ -195,6 +185,17 @@
 
     
     </div>
+
+    
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+
+    <ul>
+        <li><a href="Card.html">Card</a></li>
+    </ul>
+
 
     
 
@@ -244,6 +245,11 @@
 
     
 
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Card.html#deck">Card#deck</a>
+    </li></ul></dd>
     
 
     
@@ -315,6 +321,11 @@
     
 
     
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Card.html#rank">Card#rank</a>
+    </li></ul></dd>
+    
 
     
 
@@ -335,7 +346,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="card_card.js.html">card/card.js</a>, <a href="card_card.js.html#line32">line 32</a>
+        <a href="card_joker.js.html">card/joker.js</a>, <a href="card_joker.js.html#line71">line 71</a>
     </li></ul></dd>
     
 
@@ -380,6 +391,11 @@
 
     
 
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Card.html#suit">Card#suit</a>
+    </li></ul></dd>
     
 
     
@@ -458,6 +474,11 @@
     
 
     
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Card.html#unicode">Card#unicode</a>
+    </li></ul></dd>
+    
 
     
 
@@ -478,7 +499,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="card_card.js.html">card/card.js</a>, <a href="card_card.js.html#line77">line 77</a>
+        <a href="card_joker.js.html">card/joker.js</a>, <a href="card_joker.js.html#line66">line 66</a>
     </li></ul></dd>
     
 
@@ -515,7 +536,7 @@
 
 <div class="description">
     <p>Returns a human-readable string representation of the card object</p>
-<p>eg. <code>&quot;&lt;Card suit=spades rank=Ace&gt;&quot;</code></p>
+<p>eg. <code>&quot;&lt;JokerCard color=red&gt;&quot;</code></p>
 </div>
 
 
@@ -539,6 +560,11 @@
     
 
     
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Card.html#toString">Card#toString</a>
+    </li></ul></dd>
+    
 
     
 
@@ -559,7 +585,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="card_card.js.html">card/card.js</a>, <a href="card_card.js.html#line44">line 44</a>
+        <a href="card_joker.js.html">card/joker.js</a>, <a href="card_joker.js.html#line56">line 56</a>
     </li></ul></dd>
     
 

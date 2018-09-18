@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: card/card.js</title>
+    <title>JSDoc: Source: card/joker.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: card/card.js</h1>
+    <h1 class="page-title">Source: card/joker.js</h1>
 
     
 
@@ -27,75 +27,64 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>
-const { Deck } = require('../deck');
+const { Card } = require('./card');
+const { none } = require ('../suits');
 const { Rank } = require('../rank');
-const { Suit } = require('../suit');
+const { joker } = require('../ranks');
 
 const props = new WeakMap();
 
+let preferedColor = 'black';
+
+const colors = new Set([ 'black', 'white', 'red' ]);
+
 /**
- * @class Card
- * @param suit {Suit}
- * @param rank {Rank}
- * @description The main class for representing a single card
+ * Sets the prefered joker color to use when creating joker cards. Effects the unicode character
+ * for the card.
+ *
+ * @param color {'red'|'black'|'white'}
+ * @return void
  */
-class Card {
-	constructor(suit, rank) {
-		if (! (suit instanceof Suit)) {
-			throw new Error('Card: Invalid card suit provided, must be an instance of Suit');
-		}
-
-		if (! (rank instanceof Rank)) {
-			throw new Error('Card: Invalid card rank provided, must be an instance of Rank');
-		}
-
-		props.set(this, {
-			deck: null
-		});
-
-		/** @member {Suit} */
-		this.suit = suit;
-
-		/** @member {Rank} */
-		this.rank = rank;
-
-		Object.freeze(this);
+exports.preferedJokerColor = (color) => {
+	if (! colors.has(color)) {
+		throw new Error('Unexpected color for joker; Must be "black", "white", or "red"');
 	}
 	
+	preferedColor = color;
+};
+
+/**
+ * @class JokerCard
+ * @extends Card
+ * @param color {'red'|'black'|'white'} - Defaults to whatever is set as the prefered color
+ * @see preferedJokerColor
+ * @description Special sub-class for representing Joker cards
+ */
+class JokerCard extends Card {
+	constructor(color = preferedColor) {
+		if (! colors.has(color)) {
+			throw new Error('Unexpected color for joker; Must be "black", "white", or "red"');
+		}
+	
+		super({ suit: none, rank: joker });
+
+		props.set(this, {
+			color,
+			rank: null
+		});
+	}
+
 	/**
 	 * Returns a human-readable string representation of the card object
 	 *
-	 * eg. `"&lt;Card suit=spades rank=Ace>"`
+	 * eg. `"&lt;JokerCard color=red>"`
 	 *
 	 * @return {string}
 	 */
 	toString() {
-		return `&lt;Card suit=${this.suit.name} value=${this.rank.longName}>`;
-	}
+		const { color } = props.get(this);
 
-	/**
-	 * @type {Deck}
-	 * @description The deck instance that this card belongs to
-	 */
-	get deck() {
-		return props.get(this).deck;
-	}
-
-	set deck(deck) {
-		const _props = props.get(this);
-
-		if (deck instanceof Deck) {
-			if (_props.deck) {
-				_props.deck = null;
-				_props.deck.remove(this);
-			}
-
-			_props.deck = deck;
-		}
-
-		else if (deck == null) {
-			_props.deck = null;
-		}
+		return `&lt;JokerCard color=${color}>`;
 	}
 
 	/**
@@ -103,11 +92,22 @@ class Card {
 	 * @description The unicode character that represents this particular card if one exists
 	 */
 	get unicode() {
-		return this.suit.unicodeCards.get(this.rank);
+		return super.unicode.get(props.get(this).color);
+	}
+
+	/** @type {Rank} */
+	get rank() {
+		return props.get(this).rank;
+	}
+
+	set rank(rank) {
+		if (rank instanceof Rank) {
+			props.get(this).rank = rank;
+		}
 	}
 }
 
-exports.Card = Card;
+exports.JokerCard = JokerCard;
 </code></pre>
         </article>
     </section>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: suit.js</title>
+    <title>JSDoc: Source: decks/index.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: suit.js</h1>
+    <h1 class="page-title">Source: decks/index.js</h1>
 
     
 
@@ -27,54 +27,34 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>
-const unicodeSuits = exports.unicodeSuits = new Map();
-const unicodeCards = exports.unicodeCards = new Map();
+const { StandardDeck } = require('./standard');
+const { MajorArcanaDeck } = require('./major-arcana');
+const { EuchreDeck } = require('./euchre');
+const { PinochelDeck } = require('./pinochel');
+const { BarajaDeck } = require('./baraja');
+const { TarotDeck } = require('./tarot');
+const { PiquetDeck } = require('./piquet');
 
 /**
- * @class
+ * @module decks
+ * @description
  *
- * The main class for representing a suit of cards
+ * Provides all of the built-in classes for various types of standardized decks.
  *
- * @param name {string}
+ * ```javascript
+ * const { decks } = require('cards');
+ * ```
  */
-class Suit {
-	constructor(name) {
-		/** @member {string} */
-		this.name = name;
 
-		Object.freeze(this);
-	}
-
-	/**
-	 * Returns a human-readable string representation of the suit object
-	 *
-	 * eg. `"&lt;Suit name=spades>"`
-	 *
-	 * @methodof Suit
-	 * @return {string}
-	 */
-	toString() {
-		return `&lt;Suit name=${this.name}>`;
-	}
-
-	/**
-	 * @type {string}
-	 * @description The unicode character that represents this particular suit
-	 */
-	get unicode() {
-		return unicodeSuits.get(this);
-	}
-
-	/**
-	 * @type {Map.&lt;Rank, string|Map.&lt;string, string>>}
-	 * @description A map of ranks to the appropriate unicode character for that card
-	 */
-	get unicodeCards() {
-		return unicodeCards.get(this);
-	}
-}
-
-exports.Suit = Suit;
+module.exports = {
+	StandardDeck,
+	MajorArcanaDeck,
+	EuchreDeck,
+	PinochelDeck,
+	BarajaDeck,
+	TarotDeck,
+	PiquetDeck
+};
 </code></pre>
         </article>
     </section>

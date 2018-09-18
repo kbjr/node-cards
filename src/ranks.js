@@ -8,7 +8,7 @@ const { Rank } = require('./rank');
  * Provides represesntations for the ranks of cards (eg. "ace" or "king").
  *
  * ```javascript
- * const { Rank, ranks } = require('cards');
+ * const { ranks } = require('cards');
  * ```
  */
 

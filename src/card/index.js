@@ -1,8 +1,9 @@
 
 const { Card } = require('./card');
-const { JokerCard } = require('./joker');
+const { JokerCard, preferedJokerColor } = require('./joker');
 
 module.exports = {
 	Card,
-	JokerCard
+	JokerCard,
+	preferedJokerColor
 };

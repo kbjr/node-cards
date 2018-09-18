@@ -7,6 +7,17 @@ const { BarajaDeck } = require('./baraja');
 const { TarotDeck } = require('./tarot');
 const { PiquetDeck } = require('./piquet');
 
+/**
+ * @module decks
+ * @description
+ *
+ * Provides all of the built-in classes for various types of standardized decks.
+ *
+ * ```javascript
+ * const { decks } = require('cards');
+ * ```
+ */
+
 module.exports = {
 	StandardDeck,
 	MajorArcanaDeck,

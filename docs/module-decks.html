@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: suit.js</title>
+    <title>JSDoc: Module: decks</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,67 +17,131 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: suit.js</h1>
+    <h1 class="page-title">Module: decks</h1>
 
     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>
-const unicodeSuits = exports.unicodeSuits = new Map();
-const unicodeCards = exports.unicodeCards = new Map();
+        
+            
+        
+    
+</header>
 
-/**
- * @class
- *
- * The main class for representing a suit of cards
- *
- * @param name {string}
- */
-class Suit {
-	constructor(name) {
-		/** @member {string} */
-		this.name = name;
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>Provides all of the built-in classes for various types of standardized decks.</p>
+<pre class="prettyprint source lang-javascript"><code>const { decks } = require('cards');</code></pre></div>
+        
 
-		Object.freeze(this);
-	}
+        
+            
 
-	/**
-	 * Returns a human-readable string representation of the suit object
-	 *
-	 * eg. `"&lt;Suit name=spades>"`
-	 *
-	 * @methodof Suit
-	 * @return {string}
-	 */
-	toString() {
-		return `&lt;Suit name=${this.name}>`;
-	}
 
-	/**
-	 * @type {string}
-	 * @description The unicode character that represents this particular suit
-	 */
-	get unicode() {
-		return unicodeSuits.get(this);
-	}
 
-	/**
-	 * @type {Map.&lt;Rank, string|Map.&lt;string, string>>}
-	 * @description A map of ranks to the appropriate unicode character for that card
-	 */
-	get unicodeCards() {
-		return unicodeCards.get(this);
-	}
-}
 
-exports.Suit = Suit;
-</code></pre>
-        </article>
-    </section>
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="decks_index.js.html">decks/index.js</a>, <a href="decks_index.js.html#line10">line 10</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
