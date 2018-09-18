@@ -1,7 +1,7 @@
 
 const { Card } = require('./card');
 const { none } = require ('../suits');
-const { joker } = require('../ranks');
+const { Rank, joker } = require('../ranks');
 
 const props = new WeakMap();
 
@@ -26,7 +26,8 @@ exports.JokerCard = class JokerCard extends Card {
 		super({ suit: none, rank: joker });
 
 		props.set(this, {
-			color
+			color,
+			rank: null
 		});
 	}
 
@@ -38,5 +39,15 @@ exports.JokerCard = class JokerCard extends Card {
 
 	get unicode() {
 		return super.unicode.get(props.get(this).color);
+	}
+
+	get rank() {
+		return props.get(this).rank;
+	}
+
+	set rank(rank) {
+		if (rank instanceof Rank) {
+			props.get(this).rank = rank;
+		}
 	}
 };

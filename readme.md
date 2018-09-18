@@ -56,3 +56,7 @@ deck.discard(toExchange);
 // Draw 2 new ones from the deck
 hand.push(...deck.draw(2));
 ```
+
+### TODO
+
+- Finish building out docs
