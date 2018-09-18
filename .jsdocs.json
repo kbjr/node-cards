@@ -5,7 +5,7 @@
 		"destination": "./docs/"
 	},
 	"source": {
-		"include": [ "src", "package.json", "readme.md" ],
+		"include": [ "src", "readme.md" ],
 		"includePattern": ".js$",
 		"excludePattern": "(node_modules/|docs)"
 	},
