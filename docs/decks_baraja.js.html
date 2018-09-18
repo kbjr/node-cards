@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: rank.js</title>
+    <title>JSDoc: Source: decks/baraja.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: rank.js</h1>
+    <h1 class="page-title">Source: decks/baraja.js</h1>
 
     
 
@@ -27,36 +27,45 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>
+const { Deck } = require('../deck');
+const { Card, JokerCard } = require('../card');
+const { swords, cups, coins, wands } = require ('../suits');
+const { one, two, three, four, five, six, seven, eight, nine, jack, knight, king } = require('../ranks');
+
 /**
- * @class
- * 
- * The main base class for representing a rank of card (eg. "ace" or "king")
- *
- * @param shortName {string}
- * @param longName {string}
+ * @typedef BarajaDeckOptions
+ * @property stripped {boolean=false}
+ * @property jokers {number=0}
  */
-class Rank {
-	constructor(shortName, longName) {
-		/** @member {string} */
-		this.shortName = shortName;
 
-		/** @member {string} */
-		this.longName = longName;
+exports.BarajaDeck = class BarajaDeck extends Deck {
+	constructor(/** @type {BarajaDeckOptions} */ { stripped = false, jokers = 0 }) {
+		super(generateDeck(stripped, jokers));
+	}
+};
+
+const suits = [ swords, cups, coins, wands ];
+const ranks = [ one, two, three, four, five, six, seven, eight, nine, jack, knight, king ];
+
+const generateDeck = (stripped, jokers) => {
+	const cards = [ ];
+
+	suits.forEach((suit) => {
+		ranks.forEach((rank) => {
+			if (stripped &amp;&amp; (rank.shortName === 8 || rank.shortName === 9)) {
+				return;
+			}
+
+			cards.push(new Card(suit, rank));
+		});
+	});
+
+	for (let i = 0; i &lt; jokers; i++) {
+		cards.push(new JokerCard());
 	}
 
-	/**
-	 * Returns a human-readable string representation of the rank object
-	 *
-	 * eg. `"&lt;Rank shortName=A longName=Ace>"`
-	 *
-	 * @return {string}
-	 */
-	toString() {
-		return `&lt;Rank shortName=${this.shortName} longName=${this.longName}>`;
-	}
-}
-
-exports.Rank = Rank;
+	return cards;
+};
 </code></pre>
         </article>
     </section>

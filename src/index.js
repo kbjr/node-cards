@@ -38,13 +38,25 @@ module.exports = {
 		seedArc4,
 		shuffle
 	},
+	/**
+	 * @member Card
+	 * @see Card
+	 */
 	Card,
+	/**
+	 * @member JokerCard
+	 * @see JokerCard
+	 */
 	JokerCard,
 	/**
 	 * @member Deck
 	 * @see Deck
 	 */
 	Deck,
+	/**
+	 * @alias module:cards.decks
+	 * @see module:decks
+	 */
 	decks: {
 		StandardDeck, MajorArcanaDeck, EuchreDeck,
 		PinochelDeck, BarajaDeck, TarotDeck, PiquetDeck

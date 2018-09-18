@@ -5,7 +5,7 @@ const { Suit } = require('../suit');
 
 const props = new WeakMap();
 
-exports.Card = class Card {
+class Card {
 	/**
 	 * The main class for representing a single card
 	 *
@@ -65,4 +65,6 @@ exports.Card = class Card {
 	get unicode() {
 		return this.suit.unicodeCards.get(this.rank);
 	}
-};
+}
+
+exports.Card = Card;

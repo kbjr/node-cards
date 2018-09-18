@@ -4,7 +4,7 @@
   "version": "0.1.1",
   "author": "James Brumond <james@jbrumond.me> (http://jbrumond.me)",
   "scripts": {
-    "jsdocs": "jsdoc ./src/ -d ./docs/ -c ./.jsdocs.json"
+    "jsdocs": "jsdoc ./src/ -r -d ./docs/ -c ./.jsdocs.json"
   },
   "repository": {
     "type": "git",
