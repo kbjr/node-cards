@@ -69,3 +69,9 @@ hand.push(...deck.draw(2));
 
 [1]: https://en.wikipedia.org/wiki/Minor_Arcana
 [2]: https://en.wikipedia.org/wiki/Knight_(playing_card)
+
+---
+
+Like my work?
+
+[![ko-fi](https://www.ko-fi.com/img/donate_sm.png)](https://ko-fi.com/U7U8MIC8)
