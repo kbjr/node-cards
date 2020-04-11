@@ -2,7 +2,8 @@
 const { useArc4, seedArc4, shuffle } = require('./rand');
 
 const { Card, JokerCard, preferedJokerColor } = require('./card');
-const { Suit, spades, hearts, diamonds, clubs, trump, swords, cups, coins, wands, majorArcana, none } = require('./suits');
+const { spades, hearts, diamonds, clubs, trump, swords, cups, coins, wands, majorArcana, none } = require('./suits');
+const { Suit } = require('./suit');
 const { Rank } = require('./rank');
 const {
 	ace, two, three, four, five, six, seven, eight, nine, ten, jack, queen, king, joker, one, cavalier, knight, page,
