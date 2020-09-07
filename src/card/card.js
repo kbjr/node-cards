@@ -59,8 +59,8 @@ class Card {
 
 		if (deck instanceof Deck) {
 			if (_props.deck) {
-				_props.deck = null;
 				_props.deck.remove(this);
+				_props.deck = null;
 			}
 
 			_props.deck = deck;
