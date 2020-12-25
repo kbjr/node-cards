@@ -252,6 +252,8 @@
 
 
 
+
+
     
     </div>
 
@@ -617,6 +619,8 @@
 
 
 
+
+
 <h5>Returns:</h5>
 
         
@@ -747,7 +751,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="deck.js.html">deck.js</a>, <a href="deck.js.html#line195">line 195</a>
+        <a href="deck.js.html">deck.js</a>, <a href="deck.js.html#line211">line 211</a>
     </li></ul></dd>
     
 
@@ -757,6 +761,8 @@
 
     
 </dl>
+
+
 
 
 
@@ -856,7 +862,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="deck.js.html">deck.js</a>, <a href="deck.js.html#line339">line 339</a>
+        <a href="deck.js.html">deck.js</a>, <a href="deck.js.html#line355">line 355</a>
     </li></ul></dd>
     
 
@@ -866,6 +872,8 @@
 
     
 </dl>
+
+
 
 
 
@@ -1022,7 +1030,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="deck.js.html">deck.js</a>, <a href="deck.js.html#line95">line 95</a>
+        <a href="deck.js.html">deck.js</a>, <a href="deck.js.html#line111">line 111</a>
     </li></ul></dd>
     
 
@@ -1032,6 +1040,8 @@
 
     
 </dl>
+
+
 
 
 
@@ -1189,7 +1199,7 @@ and returns the drawn cards</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="deck.js.html">deck.js</a>, <a href="deck.js.html#line120">line 120</a>
+        <a href="deck.js.html">deck.js</a>, <a href="deck.js.html#line136">line 136</a>
     </li></ul></dd>
     
 
@@ -1199,6 +1209,8 @@ and returns the drawn cards</p>
 
     
 </dl>
+
+
 
 
 
@@ -1355,7 +1367,7 @@ and returns the drawn cards</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="deck.js.html">deck.js</a>, <a href="deck.js.html#line145">line 145</a>
+        <a href="deck.js.html">deck.js</a>, <a href="deck.js.html#line161">line 161</a>
     </li></ul></dd>
     
 
@@ -1365,6 +1377,8 @@ and returns the drawn cards</p>
 
     
 </dl>
+
+
 
 
 
@@ -1522,7 +1536,7 @@ and returns the drawn cards</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="deck.js.html">deck.js</a>, <a href="deck.js.html#line170">line 170</a>
+        <a href="deck.js.html">deck.js</a>, <a href="deck.js.html#line186">line 186</a>
     </li></ul></dd>
     
 
@@ -1532,6 +1546,8 @@ and returns the drawn cards</p>
 
     
 </dl>
+
+
 
 
 
@@ -1583,7 +1599,8 @@ and returns the drawn cards</p>
 
 <div class="description">
     <p>Finds all cards in the deck matching the given filtering function</p>
-<pre class="prettyprint source lang-javascript"><code>const aces = deck.findCards((card) => card.rank === ace);</code></pre>
+<pre class="prettyprint source lang-javascript"><code>const aces = deck.findCards((card) => card.rank === ace);
+</code></pre>
 </div>
 
 
@@ -1681,7 +1698,7 @@ and returns the drawn cards</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="deck.js.html">deck.js</a>, <a href="deck.js.html#line357">line 357</a>
+        <a href="deck.js.html">deck.js</a>, <a href="deck.js.html#line373">line 373</a>
     </li></ul></dd>
     
 
@@ -1691,6 +1708,8 @@ and returns the drawn cards</p>
 
     
 </dl>
+
+
 
 
 
@@ -1839,7 +1858,7 @@ and returns the drawn cards</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="deck.js.html">deck.js</a>, <a href="deck.js.html#line233">line 233</a>
+        <a href="deck.js.html">deck.js</a>, <a href="deck.js.html#line249">line 249</a>
     </li></ul></dd>
     
 
@@ -1849,6 +1868,8 @@ and returns the drawn cards</p>
 
     
 </dl>
+
+
 
 
 
@@ -1878,6 +1899,199 @@ and returns the drawn cards</p>
 
     </dd>
 </dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="merge"><span class="type-signature"></span>merge<span class="signature">(deck, pile)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Merge the given Deck into this one, moving all cards belonging to the given Deck into this Deck.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>deck</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Deck.html">Deck</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>pile</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">'deck'</span>
+|
+
+<span class="param-type">'discard'</span>
+|
+
+<span class="param-type">'pile'</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    deck
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Deck.html#merge">Deck#merge</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="deck.js.html">deck.js</a>, <a href="deck.js.html#line96">line 96</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>void</p>
+</div>
+
+
 
     
 
@@ -2020,6 +2234,8 @@ and returns the drawn cards</p>
 
 
 
+
+
 <h5>Returns:</h5>
 
         
@@ -2098,7 +2314,7 @@ and returns the drawn cards</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="deck.js.html">deck.js</a>, <a href="deck.js.html#line283">line 283</a>
+        <a href="deck.js.html">deck.js</a>, <a href="deck.js.html#line299">line 299</a>
     </li></ul></dd>
     
 
@@ -2108,6 +2324,8 @@ and returns the drawn cards</p>
 
     
 </dl>
+
+
 
 
 
@@ -2207,7 +2425,7 @@ and returns the drawn cards</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="deck.js.html">deck.js</a>, <a href="deck.js.html#line324">line 324</a>
+        <a href="deck.js.html">deck.js</a>, <a href="deck.js.html#line340">line 340</a>
     </li></ul></dd>
     
 
@@ -2217,6 +2435,8 @@ and returns the drawn cards</p>
 
     
 </dl>
+
+
 
 
 
@@ -2316,7 +2536,7 @@ and returns the drawn cards</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="deck.js.html">deck.js</a>, <a href="deck.js.html#line309">line 309</a>
+        <a href="deck.js.html">deck.js</a>, <a href="deck.js.html#line325">line 325</a>
     </li></ul></dd>
     
 
@@ -2326,6 +2546,8 @@ and returns the drawn cards</p>
 
     
 </dl>
+
+
 
 
 
@@ -2425,7 +2647,7 @@ and returns the drawn cards</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="deck.js.html">deck.js</a>, <a href="deck.js.html#line300">line 300</a>
+        <a href="deck.js.html">deck.js</a>, <a href="deck.js.html#line316">line 316</a>
     </li></ul></dd>
     
 
@@ -2435,6 +2657,8 @@ and returns the drawn cards</p>
 
     
 </dl>
+
+
 
 
 
@@ -2493,7 +2717,7 @@ and returns the drawn cards</p>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Sep 18 2018 00:08:34 GMT-0700 (Pacific Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Fri Dec 25 2020 13:57:34 GMT-0800 (Pacific Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
