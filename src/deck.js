@@ -85,6 +85,22 @@ class Deck {
 
 		card.deck = null;
 	}
+	
+	/**
+	 * Merge the given Deck into this one, moving all cards belonging to the given Deck into this Deck.
+	 *
+	 * @param deck {Deck}
+	 * @param pile {'deck'|'discard'|'pile'}
+	 * @return void
+	 */
+	merge(deck, pile = 'deck') {
+		const { cards } = props.get(deck);
+		
+		cards.forEach((card) => {
+			deck.remove(card);
+			this.add(card, pile);
+		});
+	}
 
 	/**
 	 * Draw the given number of cards, places them in the held pile, and returns the drawn cards
