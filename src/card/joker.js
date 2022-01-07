@@ -58,13 +58,21 @@ class JokerCard extends Card {
 
 		return `<JokerCard color=${color}>`;
 	}
+	
+	/**
+	 * @type {'red'|'black'|'white'}
+	 * @description The color value the JokerCard was initialized with
+	 */
+	get color() {
+		return props.get(this).color;
+	}
 
 	/**
 	 * @type {string|void}
 	 * @description The unicode character that represents this particular card if one exists
 	 */
 	get unicode() {
-		return super.unicode.get(props.get(this).color);
+		return super.unicode.get(this.color);
 	}
 
 	// /** @type {Rank} */
