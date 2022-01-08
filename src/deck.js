@@ -50,6 +50,22 @@ class Deck {
 	}
 
 	/**
+	 * @type {Card[]}
+	 * @description Copy of the array of cards in held pile
+	 */
+	get held() {
+		return props.get(this).discard.slice();
+	}
+
+	/**
+	 * @type {Card[]}
+	 * @description Copy of the array of cards in discard pile
+	 */
+	get discarded() {
+		return props.get(this).discard.slice();
+	}
+
+	/**
 	 * Add a new card to the deck, placing it in the given pile
 	 *
 	 * @param card {Card}
