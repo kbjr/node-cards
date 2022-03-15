@@ -20,6 +20,7 @@
     "shuffle"
   ],
   "main": "src/index.js",
+  "license": "MIT",
   "dependencies": {
     "source-map-support": "^0.5.19"
   },
