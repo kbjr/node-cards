@@ -1,0 +1,30 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.trump = void 0;
+const _rank_1 = require("./_rank");
+var trump;
+(function (trump) {
+    trump.trump0 = new _rank_1.Rank('0', 'The Fool');
+    trump.trump1 = new _rank_1.Rank('I', 'The Individual');
+    trump.trump2 = new _rank_1.Rank('II', 'Childhood');
+    trump.trump3 = new _rank_1.Rank('III', 'Youth');
+    trump.trump4 = new _rank_1.Rank('IV', 'Maturity');
+    trump.trump5 = new _rank_1.Rank('V', 'Old Age');
+    trump.trump6 = new _rank_1.Rank('VI', 'Morning');
+    trump.trump7 = new _rank_1.Rank('VII', 'Afternoon');
+    trump.trump8 = new _rank_1.Rank('VIII', 'Evening');
+    trump.trump9 = new _rank_1.Rank('IX', 'Night');
+    trump.trump10 = new _rank_1.Rank('X', 'Earth & Air');
+    trump.trump11 = new _rank_1.Rank('XI', 'Water & Fire');
+    trump.trump12 = new _rank_1.Rank('XII', 'Dance');
+    trump.trump13 = new _rank_1.Rank('XIII', 'Shopping');
+    trump.trump14 = new _rank_1.Rank('XIV', 'The Outdoors');
+    trump.trump15 = new _rank_1.Rank('XV', 'Visual Arts');
+    trump.trump16 = new _rank_1.Rank('XVI', 'Spring');
+    trump.trump17 = new _rank_1.Rank('XVII', 'Summer');
+    trump.trump18 = new _rank_1.Rank('XVIII', 'Autumn');
+    trump.trump19 = new _rank_1.Rank('XIX', 'Winter');
+    trump.trump20 = new _rank_1.Rank('XX', 'The Game');
+    trump.trump21 = new _rank_1.Rank('XXI', 'The Collective');
+})(trump = exports.trump || (exports.trump = {}));
+//# sourceMappingURL=trump.js.map

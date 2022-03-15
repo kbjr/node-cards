@@ -1,0 +1,12 @@
+import { Suit } from './_suit';
+export declare const spades: Suit;
+export declare const hearts: Suit;
+export declare const diamonds: Suit;
+export declare const clubs: Suit;
+export declare const trump: Suit;
+export declare const swords: Suit;
+export declare const cups: Suit;
+export declare const coins: Suit;
+export declare const wands: Suit;
+export declare const majorArcana: Suit;
+export declare const none: Suit;

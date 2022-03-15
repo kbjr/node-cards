@@ -1,0 +1,30 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.majorArcana = void 0;
+const _rank_1 = require("./_rank");
+var majorArcana;
+(function (majorArcana) {
+    majorArcana.arcana0 = new _rank_1.Rank('0', 'The Fool');
+    majorArcana.arcana1 = new _rank_1.Rank('I', 'The Magician');
+    majorArcana.arcana2 = new _rank_1.Rank('II', 'The High Priestess');
+    majorArcana.arcana3 = new _rank_1.Rank('III', 'The Empress');
+    majorArcana.arcana4 = new _rank_1.Rank('IV', 'The Emperor');
+    majorArcana.arcana5 = new _rank_1.Rank('V', 'The Hierophant');
+    majorArcana.arcana6 = new _rank_1.Rank('VI', 'The Lovers');
+    majorArcana.arcana7 = new _rank_1.Rank('VII', 'The Chariot');
+    majorArcana.arcana8 = new _rank_1.Rank('VIII', 'Strength');
+    majorArcana.arcana9 = new _rank_1.Rank('IX', 'The Hermit');
+    majorArcana.arcana10 = new _rank_1.Rank('X', 'Wheel of Fortune');
+    majorArcana.arcana11 = new _rank_1.Rank('XI', 'Justice');
+    majorArcana.arcana12 = new _rank_1.Rank('XII', 'The Hanged Man');
+    majorArcana.arcana13 = new _rank_1.Rank('XIII', 'Death');
+    majorArcana.arcana14 = new _rank_1.Rank('XIV', 'Temperance');
+    majorArcana.arcana15 = new _rank_1.Rank('XV', 'The Devil');
+    majorArcana.arcana16 = new _rank_1.Rank('XVI', 'The Tower');
+    majorArcana.arcana17 = new _rank_1.Rank('XVII', 'The Star');
+    majorArcana.arcana18 = new _rank_1.Rank('XVIII', 'The Moon');
+    majorArcana.arcana19 = new _rank_1.Rank('XIX', 'The Sun');
+    majorArcana.arcana20 = new _rank_1.Rank('XX', 'Judgement');
+    majorArcana.arcana21 = new _rank_1.Rank('XXI', 'The World');
+})(majorArcana = exports.majorArcana || (exports.majorArcana = {}));
+//# sourceMappingURL=major-arcana.js.map
