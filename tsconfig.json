@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "commonjs",
+    "outDir": "build",
+    "rootDir": "src",
+    "declaration": true,
+    "sourceMap": true,
+    "declarationMap": false,
+    "incremental": true,
+    "moduleResolution": "node",
+    "typeRoots": [
+      "node_modules/@types/"
+    ],
+    "tsBuildInfoFile": "build/.tsbuildinfo",
+    "lib": [
+      "es2020"
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    "build"
+  ],
+  "include": [
+    "src/**/*.ts"
+  ]
+}

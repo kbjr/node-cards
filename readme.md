@@ -5,7 +5,9 @@ Node.js library for dealing with playing cards of all types
 
 Fully extensible, you can create custom versions of any component to make different types of deck, including support for custom decks, suits, ranks, and cards.
 
-And the API is fully documented at http://kbjr.github.io/node-cards/index.html
+### Version 2
+
+This is a beta branch for the v2 rewrite. The primary purpose of the rewrite is the update to TypeScript, as well as some general refactoring.
 
 ### Install
 
@@ -38,14 +40,15 @@ $ npm install cards
   - 22 card major arcana deck
   - Support for creating custom decks
 - Supports unicode playing card characters where available
+- TypeScript definitions provided
 
 ### Example
 
-```javascript
-const { decks } = require('cards');
+```typescript
+import { StandardDeck } from 'cards';
 
 // Create a standard 52 card deck + 2 jokers
-const deck = new decks.StandardDeck({ jokers: 2 });
+const deck = new StandardDeck({ jokers: 2 });
 
 // Shuffle the deck
 deck.shuffleAll();

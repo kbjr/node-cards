@@ -1,10 +1,12 @@
 {
   "name": "cards",
   "description": "Basic playing cards module",
-  "version": "1.2.0",
+  "version": "2.0.0-alpha.1",
   "author": "James Brumond <james@jbrumond.me> (http://jbrumond.me)",
   "scripts": {
-    "jsdocs": "jsdoc -c ./.jsdocs.json"
+    "test": "echo 'No tests defined'",
+    "clean": "rimraf ./build",
+    "build": "tsc --build tsconfig.json"
   },
   "repository": {
     "type": "git",
@@ -19,11 +21,11 @@
   ],
   "main": "src/index.js",
   "dependencies": {
-    "rand-utils": "^1.0.0"
+    "source-map-support": "^0.5.19"
   },
   "devDependencies": {
-    "eslint": "^5.5.0",
-    "jsdoc": "^3.5.5",
-    "jsdoc-template": "^1.2.0"
+    "@types/node": "^17.0.21",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.3.4"
   }
 }
