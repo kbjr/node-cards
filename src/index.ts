@@ -1,6 +1,5 @@
 
-export { shuffle, RandomGenerator, MathRandomGenerator } from './shuffle';
-
+export * from './shuffle';
 export * from './cards';
 export * as decks from './decks';
 export * as ranks from './ranks';

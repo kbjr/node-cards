@@ -6,7 +6,7 @@ import { spades, hearts, diamonds, clubs } from '../suits';
 import { standard } from '../ranks';
 
 export interface StandardDeckOpts {
-	/** Either a number of jokers to generate, or an array of jokers to add to the deck */
+	/** Either a number of jokers to generate, or an array of specific joker cards to add to the deck */
 	jokers?: number | JokerCard[];
 	rng?: RandomGenerator;
 }
