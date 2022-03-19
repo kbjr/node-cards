@@ -20,7 +20,7 @@
     "random",
     "shuffle"
   ],
-  "main": "src/index.js",
+  "main": "build/index.js",
   "license": "MIT",
   "devDependencies": {
     "@types/chai": "^4.3.0",
