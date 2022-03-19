@@ -42,13 +42,13 @@ $ npm install cards
 - Supports unicode playing card characters where available
 - TypeScript definitions provided
 
-### Example
+### Examples
 
 ```typescript
-import { StandardDeck } from 'cards';
+import { decks } from 'cards';
 
 // Create a standard 52 card deck + 2 jokers
-const deck = new StandardDeck({ jokers: 2 });
+const deck = new decks.StandardDeck({ jokers: 2 });
 
 // Shuffle the deck
 deck.shuffleAll();
@@ -64,6 +64,24 @@ deck.discard(toExchange);
 
 // Draw 2 new ones from the deck
 hand.push(...deck.draw(2));
+```
+
+#### Custom Randomization Source
+
+```typescript
+import { RandomGenerator, decks } from 'cards';
+
+// Create a new RandomGenerator implementation
+class MyRNG implements RandomGenerator {
+  // The `int` method should return a random integer between 0 and `max`
+  int(max: number) : number {
+    return (Math.random() * max) | 0;
+  }
+}
+
+// You can pass an instance of RNG implemenation to any `Deck` class, and
+// it will be used for any randomization requiring tasks (i.e. shuffling)
+const deck = new decks.StandardDeck({ rng: new MyRNG() });
 ```
 
 ### TODO

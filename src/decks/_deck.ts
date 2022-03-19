@@ -14,7 +14,7 @@ export interface CardLocation {
 	card: Card;
 }
 
-interface FindCardCallback {
+export interface FindCardCallback {
 	(card: Card): boolean;
 }
 
