@@ -5,7 +5,7 @@ import { RandomGenerator } from '../shuffle';
 import { swords, cups, coins, wands } from '../suits';
 import { standard, nonStandard } from '../ranks';
 
-export interface BajaraDeckOpts {
+export interface BarajaDeckOpts {
 	/** Either a number of jokers to generate, or an array of specific joker cards to add to the deck */
 	jokers?: number | JokerCard[];
 	/** Create a stripped deck (no 8 or 9 rank cards) */
@@ -30,9 +30,9 @@ const ranks = [
 	standard.king
 ];
 
-export class BajaraDeck extends Deck {
-	constructor(opts: BajaraDeckOpts = { }) {
-		const cards = BajaraDeck.generateCards(opts);
+export class BarajaDeck extends Deck {
+	constructor(opts: BarajaDeckOpts = { }) {
+		const cards = BarajaDeck.generateCards(opts);
 
 		super({
 			cards,
@@ -40,7 +40,7 @@ export class BajaraDeck extends Deck {
 		});
 	}
 
-	private static generateCards({ jokers, stripped }: BajaraDeckOpts) {
+	private static generateCards({ jokers, stripped }: BarajaDeckOpts) {
 		const cards: Card[] = [ ];
 	
 		suits.forEach((suit) => {
