@@ -5,7 +5,8 @@
   "author": "James Brumond <james@jbrumond.me> (http://jbrumond.me)",
   "scripts": {
     "test": "mocha --require ts-node/register ./tests/**/*.test.ts",
-    "clean": "rimraf ./build",
+    "clean": "rimraf ./build ./docs",
+    "docs": "typedoc --out docs src/index.ts",
     "build": "tsc --build tsconfig.json"
   },
   "repository": {
