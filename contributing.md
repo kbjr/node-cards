@@ -3,7 +3,7 @@
 
 ### A Quick Note
 
-At a high-level, this project is maintained by one person, and I have a full-time job and other projects. While I generally want to
+This project is maintained by one person, and I have a full-time job and other projects. While I generally want to
 help and continue to provide updates, I am not always going to be quick to respond or react to everything.
 
 Please manage your expectations accordingly.
