@@ -1,4 +1,6 @@
 
+[![CI](https://github.com/kbjr/node-cards/actions/workflows/ci.yaml/badge.svg)](https://github.com/kbjr/node-cards/actions/workflows/ci.yaml)
+
 Node.js library for dealing with playing cards of all types
 
 [https://github.com/kbjr/node-cards](https://github.com/kbjr/node-cards)
