@@ -17,7 +17,7 @@ Version 2 has now been released. Short list of some of the notable changes:
   - Built-in implementations are provided for `Math.random()` and the node.js `crypto` module's `pseudoRandomBytes()` as randomization sources.
 - Some thing have moved around to new locations
 - With TypeScript came a switch to using TypeDoc for documentation generation, so docs look different now
-- Now has **no runtime dependencies** (check the [package.json](./blob/master/package.json))
+- Now has **no runtime dependencies** (check the [package.json](./package.json))
 
 ### Install
 
