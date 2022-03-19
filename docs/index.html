@@ -1,74 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>JSDoc: Home</title>
-
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
-</head>
-
-<body>
-
-<div id="main">
-
-    <h1 class="page-title">Home</h1>
-
-    
-
-
-
-    
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-    <section>
-        <article><p>Node.js library for dealing with playing cards of all types</p>
+<!DOCTYPE html><html class="default"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>cards</title><meta name="description" content="Documentation for cards"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.body.classList.add(localStorage.getItem("tsd-theme") || "os")</script><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">cards</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1>cards</h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography"><p>Node.js library for dealing with playing cards of all types</p>
 <p><a href="https://github.com/kbjr/node-cards">https://github.com/kbjr/node-cards</a></p>
 <p>Fully extensible, you can create custom versions of any component to make different types of deck, including support for custom decks, suits, ranks, and cards.</p>
-<p>And the API is fully documented at http://kbjr.github.io/node-cards/index.html</p>
-<h3>Install</h3>
-<pre class="prettyprint source lang-bash"><code>$ npm install cards
+
+<a href="#version-2" id="version-2" style="color: inherit; text-decoration: none;">
+  <h3>Version 2</h3>
+</a>
+<p>This is a beta branch for the v2 rewrite. The primary purpose of the rewrite is the update to TypeScript, as well as some general refactoring.</p>
+
+<a href="#install" id="install" style="color: inherit; text-decoration: none;">
+  <h3>Install</h3>
+</a>
+<pre><code class="language-bash"><span class="hl-0">$ npm install cards</span>
 </code></pre>
-<h3>Features</h3>
+
+<a href="#features" id="features" style="color: inherit; text-decoration: none;">
+  <h3>Features</h3>
+</a>
 <ul>
-<li>Ability to create decks of cards of various configurations
-<ul>
+<li>Ability to create decks of cards of various configurations<ul>
 <li>Shuffle the deck</li>
 <li>Draw cards and discard cards</li>
 </ul>
 </li>
-<li>Card types
-<ul>
-<li>Standard suits and values
-<ul>
+<li>Card types<ul>
+<li>Standard suits and values<ul>
 <li>Suits: spades, hearts, diamonds, clubs</li>
 <li>Values: 2 - 10, Jack, Queen, King, Ace</li>
 </ul>
 </li>
 <li>Trump suit / Fool card</li>
-<li><a href="https://en.wikipedia.org/wiki/Minor_Arcana">Minor Arcana</a>
-<ul>
+<li><a href="https://en.wikipedia.org/wiki/Minor_Arcana">Minor Arcana</a><ul>
 <li>Suits: coins, wands, cups, swords</li>
 <li>Values: 2 - 10, <a href="https://en.wikipedia.org/wiki/Page_of_Wands">Page</a>, <a href="https://en.wikipedia.org/wiki/Knight_(playing_card)">Knight / Cavalier</a>, Queen, King, Ace</li>
 </ul>
@@ -77,8 +38,7 @@
 <li>Jokers</li>
 </ul>
 </li>
-<li>Deck types
-<ul>
+<li>Deck types<ul>
 <li>Standard 52 card deck</li>
 <li>78 card tarot deck</li>
 <li>24 card euchre deck</li>
@@ -90,55 +50,28 @@
 </ul>
 </li>
 <li>Supports unicode playing card characters where available</li>
+<li>TypeScript definitions provided</li>
 </ul>
-<h3>Example</h3>
-<pre class="prettyprint source lang-javascript"><code>const { decks } = require('cards');
 
-// Create a standard 52 card deck + 2 jokers
-const deck = new decks.StandardDeck({ jokers: 2 });
-
-// Shuffle the deck
-deck.shuffleAll();
-
-// Draw a hand of five cards from the deck
-const hand = deck.draw(5);
-
-// Pull 2 cards out of the hand to exchange
-const toExchange = hand.splice(2, 2);
-
-// Discard those 2 cards
-deck.discard(toExchange);
-
-// Draw 2 new ones from the deck
-hand.push(...deck.draw(2));
+<a href="#examples" id="examples" style="color: inherit; text-decoration: none;">
+  <h3>Examples</h3>
+</a>
+<pre><code class="language-typescript"><span class="hl-1">import</span><span class="hl-0"> { </span><span class="hl-2">decks</span><span class="hl-0"> } </span><span class="hl-1">from</span><span class="hl-0"> </span><span class="hl-3">&#39;cards&#39;</span><span class="hl-0">;</span><br/><br/><span class="hl-4">// Create a standard 52 card deck + 2 jokers</span><br/><span class="hl-5">const</span><span class="hl-0"> </span><span class="hl-6">deck</span><span class="hl-0"> = </span><span class="hl-5">new</span><span class="hl-0"> </span><span class="hl-2">decks</span><span class="hl-0">.</span><span class="hl-7">StandardDeck</span><span class="hl-0">({ </span><span class="hl-2">jokers:</span><span class="hl-0"> </span><span class="hl-8">2</span><span class="hl-0"> });</span><br/><br/><span class="hl-4">// Shuffle the deck</span><br/><span class="hl-2">deck</span><span class="hl-0">.</span><span class="hl-7">shuffleAll</span><span class="hl-0">();</span><br/><br/><span class="hl-4">// Draw a hand of five cards from the deck</span><br/><span class="hl-5">const</span><span class="hl-0"> </span><span class="hl-6">hand</span><span class="hl-0"> = </span><span class="hl-2">deck</span><span class="hl-0">.</span><span class="hl-7">draw</span><span class="hl-0">(</span><span class="hl-8">5</span><span class="hl-0">);</span><br/><br/><span class="hl-4">// Pull 2 cards out of the hand to exchange</span><br/><span class="hl-5">const</span><span class="hl-0"> </span><span class="hl-6">toExchange</span><span class="hl-0"> = </span><span class="hl-2">hand</span><span class="hl-0">.</span><span class="hl-7">splice</span><span class="hl-0">(</span><span class="hl-8">2</span><span class="hl-0">, </span><span class="hl-8">2</span><span class="hl-0">);</span><br/><br/><span class="hl-4">// Discard those 2 cards</span><br/><span class="hl-2">deck</span><span class="hl-0">.</span><span class="hl-7">discard</span><span class="hl-0">(</span><span class="hl-2">toExchange</span><span class="hl-0">);</span><br/><br/><span class="hl-4">// Draw 2 new ones from the deck</span><br/><span class="hl-2">hand</span><span class="hl-0">.</span><span class="hl-7">push</span><span class="hl-0">(...</span><span class="hl-2">deck</span><span class="hl-0">.</span><span class="hl-7">draw</span><span class="hl-0">(</span><span class="hl-8">2</span><span class="hl-0">));</span>
 </code></pre>
-<h3>TODO</h3>
+
+<a href="#custom-randomization-source" id="custom-randomization-source" style="color: inherit; text-decoration: none;">
+  <h4>Custom Randomization Source</h4>
+</a>
+<pre><code class="language-typescript"><span class="hl-1">import</span><span class="hl-0"> { </span><span class="hl-2">RandomGenerator</span><span class="hl-0">, </span><span class="hl-2">decks</span><span class="hl-0"> } </span><span class="hl-1">from</span><span class="hl-0"> </span><span class="hl-3">&#39;cards&#39;</span><span class="hl-0">;</span><br/><br/><span class="hl-4">// Create a new RandomGenerator implementation</span><br/><span class="hl-5">class</span><span class="hl-0"> </span><span class="hl-9">MyRNG</span><span class="hl-0"> </span><span class="hl-5">implements</span><span class="hl-0"> </span><span class="hl-9">RandomGenerator</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-4">// The `int` method should return a random integer between 0 and `max`</span><br/><span class="hl-0">  </span><span class="hl-7">int</span><span class="hl-0">(</span><span class="hl-2">max</span><span class="hl-0">: </span><span class="hl-9">number</span><span class="hl-0">) : </span><span class="hl-9">number</span><span class="hl-0"> {</span><br/><span class="hl-0">    </span><span class="hl-1">return</span><span class="hl-0"> (</span><span class="hl-9">Math</span><span class="hl-0">.</span><span class="hl-7">random</span><span class="hl-0">() * </span><span class="hl-2">max</span><span class="hl-0">) | </span><span class="hl-8">0</span><span class="hl-0">;</span><br/><span class="hl-0">  }</span><br/><span class="hl-0">}</span><br/><br/><span class="hl-4">// You can pass an instance of RNG implemenation to any `Deck` class, and</span><br/><span class="hl-4">// it will be used for any randomization requiring tasks (i.e. shuffling)</span><br/><span class="hl-5">const</span><span class="hl-0"> </span><span class="hl-6">deck</span><span class="hl-0"> = </span><span class="hl-5">new</span><span class="hl-0"> </span><span class="hl-2">decks</span><span class="hl-0">.</span><span class="hl-7">StandardDeck</span><span class="hl-0">({ </span><span class="hl-2">rng:</span><span class="hl-0"> </span><span class="hl-5">new</span><span class="hl-0"> </span><span class="hl-7">MyRNG</span><span class="hl-0">() });</span>
+</code></pre>
+
+<a href="#todo" id="todo" style="color: inherit; text-decoration: none;">
+  <h3>TODO</h3>
+</a>
 <ul>
 <li>Finish building out poker hand evaluation logic</li>
 </ul>
 <hr>
 <p>Like my work?</p>
-<p><a href="https://ko-fi.com/U7U8MIC8"><img src="https://www.ko-fi.com/img/donate_sm.png" alt="ko-fi"></a></p></article>
-    </section>
-
-
-
-
-
-
-</div>
-
-<nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-cards.html">cards</a></li><li><a href="module-decks.html">decks</a></li><li><a href="module-rand.html">rand</a></li><li><a href="module-ranks.html">ranks</a></li><li><a href="module-suits.html">suits</a></li><li><a href="module-unicode.html">unicode</a></li></ul><h3>Classes</h3><ul><li><a href="BarajaDeck.html">BarajaDeck</a></li><li><a href="Card.html">Card</a></li><li><a href="Deck.html">Deck</a></li><li><a href="EuchreDeck.html">EuchreDeck</a></li><li><a href="JokerCard.html">JokerCard</a></li><li><a href="MajorArcanaDeck.html">MajorArcanaDeck</a></li><li><a href="PinochelDeck.html">PinochelDeck</a></li><li><a href="PiquetDeck.html">PiquetDeck</a></li><li><a href="Rank.html">Rank</a></li><li><a href="StandardDeck.html">StandardDeck</a></li><li><a href="Suit.html">Suit</a></li><li><a href="TarotDeck.html">TarotDeck</a></li></ul><h3>Global</h3><ul><li><a href="global.html#preferedJokerColor">preferedJokerColor</a></li></ul>
-</nav>
-
-<br class="clear">
-
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Sat Jan 08 2022 10:24:04 GMT-0800 (Pacific Standard Time)
-</footer>
-
-<script> prettyPrint(); </script>
-<script src="scripts/linenumber.js"> </script>
-</body>
-</html>
+<p><a href="https://ko-fi.com/U7U8MIC8"><img src="https://www.ko-fi.com/img/donate_sm.png" alt="ko-fi"></a></p>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li><li class=" tsd-kind-namespace"><a href="modules/decks.html">decks</a></li><li class=" tsd-kind-namespace"><a href="modules/ranks.html">ranks</a></li><li class=" tsd-kind-namespace"><a href="modules/suits.html">suits</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-enum"><a href="enums/jokerColor.html" class="tsd-kind-icon">joker<wbr/>Color</a></li><li class="tsd-kind-class"><a href="classes/Card.html" class="tsd-kind-icon">Card</a></li><li class="tsd-kind-class"><a href="classes/JokerCard.html" class="tsd-kind-icon">Joker<wbr/>Card</a></li><li class="tsd-kind-class"><a href="classes/MathRandomGenerator.html" class="tsd-kind-icon">Math<wbr/>Random<wbr/>Generator</a></li><li class="tsd-kind-class"><a href="classes/NodeCryptoRandomGenerator.html" class="tsd-kind-icon">Node<wbr/>Crypto<wbr/>Random<wbr/>Generator</a></li><li class="tsd-kind-interface"><a href="interfaces/RandomGenerator.html" class="tsd-kind-icon">Random<wbr/>Generator</a></li><li class="tsd-kind-function"><a href="modules.html#preferedJokerColor" class="tsd-kind-icon">prefered<wbr/>Joker<wbr/>Color</a></li><li class="tsd-kind-function tsd-has-type-parameter"><a href="modules.html#shuffle" class="tsd-kind-icon">shuffle</a></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li><li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li><li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li><li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li><li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li><li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="assets/main.js"></script></body></html>

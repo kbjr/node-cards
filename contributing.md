@@ -21,3 +21,29 @@ Pull Requests are welcome, given the following:
 - There is CI running in GitHub Actions; Please make sure that all builds succeed and pass all existing tests.
 - On the point of tests: there aren't very many at the moment, so I won't say its a requirement to add new tests if you add new code, but I also won't stop you...
 - Please don't make unneccesary breaking changes
+
+### Important Commands and Such
+
+#### Build Source Code
+
+```bash
+$ npm run build
+```
+
+#### Rebuild Documentation
+
+```bash
+$ npm run docs
+```
+
+#### Run Tests
+
+```bash
+$ npm test
+```
+
+#### Delete All Build Files
+
+```bash
+$ npm run clean
+```
