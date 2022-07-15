@@ -1,0 +1,9 @@
+# Yes. Format these files when they are present.
+!.prettier*/
+!.mochar*/
+!.huskyr*/
+
+# No. Do not format these files.
+.github
+/docs
+node_modules/

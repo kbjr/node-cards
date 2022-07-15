@@ -2,3 +2,6 @@ docs
 tests
 src
 .github
+.prettier*
+.editorconfig
+tsconfig.json
