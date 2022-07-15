@@ -7,3 +7,4 @@
 .github
 /docs
 node_modules/
+/build

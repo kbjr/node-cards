@@ -2,7 +2,7 @@
 /* istanbul ignore next: Unnecessary. */
 if (!global.log) global.log = console;
 
-/** Formatter configuration. */
+/** prettier formatter configuration. */
 const config = {
 	arrowParens: 'always',
 	bracketSpacing: true,

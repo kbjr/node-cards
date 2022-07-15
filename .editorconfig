@@ -2,8 +2,7 @@
 
 #
 # Formatting configuration for those that may choose to not use prettier.
-# At least serves as documentation for how code contributions should be
-# formatted.
+# At least serves as a minimal styleguide for contributors.
 #
 
 root = true
