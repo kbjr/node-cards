@@ -2,6 +2,8 @@ import { describe, beforeEach, it } from 'mocha';
 import { expect } from 'chai';
 import { decks } from '../src';
 import { Card } from '../src';
+import { Suit } from '../src/suits';
+import { Rank } from '../src/ranks';
 
 describe.only('StandardDeck', function () {
 	it('should exist, and be a function', function () {
@@ -75,6 +77,71 @@ describe.only('StandardDeck', function () {
 				expect(this.cards).to.have.length(2);
 				this.cards.forEach((card) => {
 					expect(card).to.be.instanceof(Card);
+				});
+			});
+		});
+
+		describe('when -46 cards are drawn', function () {
+			beforeEach(function () {
+				this.cards = this.deck.draw(-46);
+			});
+
+			describe('then it should have', function () {
+				it('total of 52 cards.', function () {
+					expect(this.deck.totalLength).to.equal(52);
+				});
+
+				it('52 cards remaining.', function () {
+					expect(this.deck.remainingLength).to.equal(52);
+					expect(this.deck.remainingCards).to.have.length(52);
+				});
+
+				it('0 held cards.', function () {
+					expect(this.deck.heldCards).to.have.length(0);
+				});
+
+				it('0 discarded cards.', function () {
+					expect(this.deck.discardedCards).to.have.length(0);
+				});
+			});
+
+			it('then my cards should be 0.', function () {
+				expect(this.cards).to.have.length(0);
+			});
+		});
+
+		describe('when 999888777 cards are drawn', function () {
+			it('then a not enough cards error should be raised.', function () {
+				expect(() => {
+					this.cards = this.deck.draw(999888777);
+				}).to.throw('not enough cards');
+			});
+		});
+
+		describe('when one card is added', function () {
+			beforeEach(function () {
+				this.suit001 = new Suit('suit001');
+				this.rank001 = new Rank('r1', 'rank001');
+				this.card001 = new Card(this.suit001, this.rank001);
+				this.deck.add(this.card001);
+			});
+
+			describe('then it should have', function () {
+				it('total of 53 cards.', function () {
+					expect(this.deck.totalLength).to.equal(53);
+				});
+
+				it('53 cards remaining.', function () {
+					expect(this.deck.remainingLength).to.equal(53);
+					expect(this.deck.remainingCards).to.have.length(53);
+				});
+
+				it('0 held cards.', function () {
+					expect(this.deck.heldCards).to.have.length(0);
+				});
+
+				it('0 discarded cards.', function () {
+					expect(this.deck.discardedCards).to.have.length(0);
 				});
 			});
 		});

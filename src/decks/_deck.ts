@@ -91,7 +91,7 @@ export class Deck {
 	public add(card: Card, pile: Pile = Pile.deck) {
 		card.deck = this;
 		this.cards.add(card);
-		this[pile].push(card);
+		this[`${pile}Pile`].push(card);
 	}
 
 	/**
