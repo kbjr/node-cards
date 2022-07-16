@@ -6,6 +6,7 @@
   "scripts": {
     "test": "npm run test:unit",
     "test:unit": "mocha --config tests/.mocharc.js",
+    "test:unit:cover": "nyc --nycrc-path tests/.nycrc.js mocha --config tests/.mocharc.js",
     "clean": "rimraf ./build ./docs",
     "docs": "typedoc --out docs src/index.ts",
     "build": "tsc --build tsconfig.json"
@@ -29,6 +30,7 @@
     "chai": "^4.3.6",
     "mocha": "^9.2.2",
     "mochawesome": "^7.1.3",
+    "nyc": "^15.1.0",
     "rimraf": "^3.0.2",
     "source-map-support": "^0.5.19",
     "ts-node": "^10.7.0",
