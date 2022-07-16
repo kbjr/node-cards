@@ -137,7 +137,7 @@ export class Deck {
 		}
 
 		const cards = this.deckPile.splice(0, count);
-		this.heldCards.push(...cards);
+		this.heldPile.push(...cards);
 		return cards;
 	}
 
