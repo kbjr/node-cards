@@ -4,8 +4,8 @@
   "version": "2.0.1",
   "author": "James Brumond <james@jbrumond.me> (http://jbrumond.me)",
   "scripts": {
-    "test": "mocha --require ts-node/register ./tests/**/*.test.ts",
-		"test:unit": "mocha --config tests/.mocharc.js",
+    "test": "npm run test:unit",
+    "test:unit": "mocha --config tests/.mocharc.js",
     "clean": "rimraf ./build ./docs",
     "docs": "typedoc --out docs src/index.ts",
     "build": "tsc --build tsconfig.json"
