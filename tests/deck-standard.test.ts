@@ -351,7 +351,7 @@ describe('StandardDeck', function () {
 		});
 	});
 
-	describe.only('Given a standard deck option of three jokers', function () {
+	describe('Given a standard deck option of three jokers', function () {
 		beforeEach(function () {
 			this.options = {
 				jokers: 3,
@@ -387,6 +387,145 @@ describe('StandardDeck', function () {
 					});
 
 					expect(this.cards).to.have.length(3);
+				});
+			});
+
+			describe('when 2 cards are drawn', function () {
+				beforeEach(function () {
+					this.cards = this.deck.draw(2);
+				});
+
+				describe('then it should have', function () {
+					it('total of 55 cards.', function () {
+						expect(this.deck.totalLength).to.equal(55);
+					});
+
+					it('53 cards remaining.', function () {
+						expect(this.deck.remainingLength).to.equal(53);
+						expect(this.deck.remainingCards).to.have.length(53);
+					});
+
+					it('2 held cards.', function () {
+						expect(this.deck.heldCards).to.have.length(2);
+					});
+
+					it('0 discarded cards.', function () {
+						expect(this.deck.discardedCards).to.have.length(0);
+					});
+				});
+
+				it('then my cards should total 2.', function () {
+					expect(this.cards).to.have.length(2);
+					this.cards.forEach((card) => {
+						expect(card).to.be.instanceof(Card);
+					});
+				});
+
+				it('then three jokers should still be present.', function () {
+					const jokers = this.deck.findCards((card) => {
+						return card.rank.name == 'Joker';
+					});
+
+					expect(jokers).to.have.length(3);
+				});
+
+				describe('and 2 cards are discarded', function () {
+					beforeEach(function () {
+						this.deck.drawToDiscard(2);
+					});
+
+					describe('then it should have', function () {
+						it('total of 55 cards.', function () {
+							expect(this.deck.totalLength).to.equal(55);
+						});
+
+						it('51 cards remaining.', function () {
+							expect(this.deck.remainingLength).to.equal(51);
+							expect(this.deck.remainingCards).to.have.length(51);
+						});
+
+						it('2 held cards.', function () {
+							expect(this.deck.heldCards).to.have.length(2);
+						});
+
+						it('2 discarded cards.', function () {
+							expect(this.deck.discardedCards).to.have.length(2);
+						});
+					});
+
+					it('then three jokers should still be present.', function () {
+						const jokers = this.deck.findCards((card) => {
+							return card.rank.name == 'Joker';
+						});
+
+						expect(jokers).to.have.length(3);
+					});
+				});
+
+				describe('and the deck is shuffled', function () {
+					beforeEach(function () {
+						this.deck.shuffleAll();
+					});
+
+					describe('then it should have', function () {
+						it('total of 55 cards.', function () {
+							expect(this.deck.totalLength).to.equal(55);
+						});
+
+						it('55 cards remaining.', function () {
+							expect(this.deck.remainingLength).to.equal(55);
+							expect(this.deck.remainingCards).to.have.length(55);
+						});
+
+						it('0 held cards.', function () {
+							expect(this.deck.heldCards).to.have.length(0);
+						});
+
+						it('0 discarded cards.', function () {
+							expect(this.deck.discardedCards).to.have.length(0);
+						});
+					});
+
+					it('then three jokers should still be present.', function () {
+						const jokers = this.deck.findCards((card) => {
+							return card.rank.name == 'Joker';
+						});
+
+						expect(jokers).to.have.length(3);
+					});
+				});
+
+				describe('and the discard pile is shuffled and placed at end of the deck', function () {
+					beforeEach(function () {
+						this.deck.shuffleDiscard();
+					});
+
+					describe('then it should have', function () {
+						it('total of 55 cards.', function () {
+							expect(this.deck.totalLength).to.equal(55);
+						});
+
+						it('53 cards remaining.', function () {
+							expect(this.deck.remainingLength).to.equal(53);
+							expect(this.deck.remainingCards).to.have.length(53);
+						});
+
+						it('2 held cards.', function () {
+							expect(this.deck.heldCards).to.have.length(2);
+						});
+
+						it('0 discarded cards.', function () {
+							expect(this.deck.discardedCards).to.have.length(0);
+						});
+					});
+
+					it('then three jokers should still be present.', function () {
+						const jokers = this.deck.findCards((card) => {
+							return card.rank.name == 'Joker';
+						});
+
+						expect(jokers).to.have.length(3);
+					});
 				});
 			});
 		});
