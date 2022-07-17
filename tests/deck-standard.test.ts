@@ -157,7 +157,7 @@ describe.only('StandardDeck', function () {
 				});
 			});
 
-			it('then my cards should be 2.', function () {
+			it('then my cards should total 2.', function () {
 				expect(this.cards).to.have.length(2);
 				this.cards.forEach((card) => {
 					expect(card).to.be.instanceof(Card);
@@ -189,7 +189,7 @@ describe.only('StandardDeck', function () {
 				});
 			});
 
-			it('then my cards should be 0.', function () {
+			it('then my cards should total 0.', function () {
 				expect(this.cards).to.have.length(0);
 			});
 		});
@@ -199,6 +199,64 @@ describe.only('StandardDeck', function () {
 				expect(() => {
 					this.cards = this.deck.draw(999888777);
 				}).to.throw('not enough cards');
+			});
+		});
+
+		describe('when default number of cards is drawn from the bottom of the deck', function () {
+			beforeEach(function () {
+				this.cards = this.deck.drawFromBottom(1);
+			});
+
+			describe('then it should have', function () {
+				it('total of 52 cards.', function () {
+					expect(this.deck.totalLength).to.equal(52);
+				});
+
+				it('51 cards remaining.', function () {
+					expect(this.deck.remainingLength).to.equal(51);
+					expect(this.deck.remainingCards).to.have.length(51);
+				});
+
+				it('1 held cards.', function () {
+					expect(this.deck.heldCards).to.have.length(1);
+				});
+
+				it('0 discarded cards.', function () {
+					expect(this.deck.discardedCards).to.have.length(0);
+				});
+			});
+
+			it('then my cards should total 1.', function () {
+				expect(this.cards).to.have.length(1);
+			});
+
+			describe('and then 3 more cards are drawn from the bottom of the deck', function () {
+				beforeEach(function () {
+					this.cards = [...this.cards, ...this.deck.drawFromBottom(3)];
+				});
+
+				describe('then it should have', function () {
+					it('total of 52 cards.', function () {
+						expect(this.deck.totalLength).to.equal(52);
+					});
+
+					it('48 cards remaining.', function () {
+						expect(this.deck.remainingLength).to.equal(48);
+						expect(this.deck.remainingCards).to.have.length(48);
+					});
+
+					it('4 held cards.', function () {
+						expect(this.deck.heldCards).to.have.length(4);
+					});
+
+					it('0 discarded cards.', function () {
+						expect(this.deck.discardedCards).to.have.length(0);
+					});
+				});
+
+				it('then my cards should total 4.', function () {
+					expect(this.cards).to.have.length(4);
+				});
 			});
 		});
 	});
