@@ -9,7 +9,9 @@
     "test:unit:cover": "nyc --nycrc-path tests/.nycrc.js mocha --config tests/.mocharc.js",
     "clean": "rimraf ./build ./docs",
     "docs": "typedoc --out docs src/index.ts",
-    "build": "tsc --build tsconfig.json"
+    "build": "tsc --build tsconfig.json",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "repository": {
     "type": "git",
@@ -31,6 +33,7 @@
     "mocha": "^9.2.2",
     "mochawesome": "^7.1.3",
     "nyc": "^15.1.0",
+    "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
     "source-map-support": "^0.5.19",
     "ts-node": "^10.7.0",

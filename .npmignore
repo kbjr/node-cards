@@ -3,3 +3,6 @@ tests
 src
 .github
 /report
+.prettier*
+.editorconfig
+tsconfig.json
