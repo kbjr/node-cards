@@ -5,7 +5,7 @@ import { Card } from '../src';
 import { Suit } from '../src/suits';
 import { Rank } from '../src/ranks';
 
-describe.only('StandardDeck', function () {
+describe('StandardDeck', function () {
 	it('should exist, and be a function', function () {
 		expect(decks.StandardDeck).to.be.a('function');
 	});
@@ -202,7 +202,7 @@ describe.only('StandardDeck', function () {
 			});
 		});
 
-		describe('when default number of cards is drawn from the bottom of the deck', function () {
+		describe('when default number of cards are drawn from the bottom of the deck', function () {
 			beforeEach(function () {
 				this.cards = this.deck.drawFromBottom(1);
 			});
@@ -257,6 +257,51 @@ describe.only('StandardDeck', function () {
 				it('then my cards should total 4.', function () {
 					expect(this.cards).to.have.length(4);
 				});
+			});
+		});
+
+		describe('when 999888777 cards are drawn from the bottom of the deck', function () {
+			it('then a not enough cards error should be raised.', function () {
+				expect(() => {
+					this.cards = this.deck.drawFromBottom(999888777);
+				}).to.throw('not enough cards');
+			});
+		});
+
+		describe('when default number of cards are drawn to discard', function () {
+			beforeEach(function () {
+				this.cards = this.deck.drawToDiscard();
+			});
+
+			describe('then it should have', function () {
+				it('total of 52 cards.', function () {
+					expect(this.deck.totalLength).to.equal(52);
+				});
+
+				it('51 cards remaining.', function () {
+					expect(this.deck.remainingLength).to.equal(51);
+					expect(this.deck.remainingCards).to.have.length(51);
+				});
+
+				it('0 held cards.', function () {
+					expect(this.deck.heldCards).to.have.length(0);
+				});
+
+				it('1 discarded cards.', function () {
+					expect(this.deck.discardedCards).to.have.length(1);
+				});
+			});
+
+			it('then my cards should total 1.', function () {
+				expect(this.cards).to.have.length(1);
+			});
+		});
+
+		describe('when 999888777 cards are drawn to discard', function () {
+			it('then a not enough cards error should be raised.', function () {
+				expect(() => {
+					this.cards = this.deck.drawToDiscard(999888777);
+				}).to.throw('not enough cards');
 			});
 		});
 	});
